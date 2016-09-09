@@ -5,12 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\User;
+use Auth;
 use Redirect;
 use Session;
-use App\User;
 
 class UsersController extends Controller
 {
+    /**
+     * Aplicar Middlewares
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => 'login']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -95,5 +104,18 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Iniciar sesión
+     */
+    public function login(Request $request) {
+        if (Auth::attempt(['user' => $request['tbUser'], 'password' => $request['tbPassword']])) {
+            Session::flash('message', 'Bienvenido de nuevo.');
+            return Redirect::to('admin/usuarios/create');
+        } else {
+            Session::flash('error', 'El usuario o contraseña son incorrectos.');
+            return Redirect::to('/');
+        }
     }
 }
