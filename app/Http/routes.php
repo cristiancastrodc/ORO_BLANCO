@@ -10,7 +10,16 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+# Rutas generales
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+Route::post('login', function() {
+  if (Auth::attempt(['user' => $request['tbUsuario'], 'password' => $request['tbPassword']])) {
+    return "Logged in.";
+  } else {
+    return "Failed login.";
+  }
+});
+# Rutas para el administrador
+Route::resource('admin/usuarios','UsersController');
