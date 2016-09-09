@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-sm-8">
         <h1>Crear Usuario</h1>
-        <form class="form-horizontal" method="POST" action="{{ url('/admin/usuarios/store') }}">
+        <form class="form-horizontal" method="POST" action="{{ url('/admin/usuarios') }}">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="form-group">
             <label for="tbUser" class="col-sm-2 control-label">Usuario:</label>
