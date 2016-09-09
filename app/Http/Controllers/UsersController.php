@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Redirect;
+use Session;
+use App\User;
 
 class UsersController extends Controller
 {
@@ -37,7 +39,17 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'user' => $request['tbUser'],
+            'password' => $request['tbPassword'],
+            'dni' => $request['tbDNI'],
+            'nombres' => $request['tbFirstName'],
+            'apellidos' => $request['tbLastName'],
+            'rol' => $request['selRole'],
+            ]);
+
+        Session::flash('message', 'Usuario creado correctamente.');
+        return Redirect::to('/admin/usuarios/create');
     }
 
     /**
