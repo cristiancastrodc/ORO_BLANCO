@@ -13,6 +13,8 @@
 # Rutas generales
 Route::get('/', function () { return view('login'); });
 Route::post('login', 'UsersController@login');
+Route::get('logout', 'UsersController@logout');
+Route::get('dashboard', 'UsersController@dashboard');
 # Rutas para el administrador
 Route::resource('admin/usuarios','UsersController');
 Route::resource('admin/productos','ProductController');

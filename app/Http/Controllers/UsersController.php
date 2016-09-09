@@ -112,10 +112,25 @@ class UsersController extends Controller
     public function login(Request $request) {
         if (Auth::attempt(['user' => $request['tbUser'], 'password' => $request['tbPassword']])) {
             Session::flash('message', 'Bienvenido de nuevo.');
-            return Redirect::to('admin/usuarios/create');
+            return Redirect::to('dashboard');
         } else {
             Session::flash('error', 'El usuario o contraseña son incorrectos.');
             return Redirect::to('/');
         }
+    }
+
+    /**
+     * Iniciar sesión
+     */
+    public function logout() {
+        Auth::logout();
+        return Redirect::to('/');
+    }
+
+    /**
+     * Mostrar el Escritorio
+     */
+    public function dashboard() {
+        return view('layouts.dashboard');
     }
 }
