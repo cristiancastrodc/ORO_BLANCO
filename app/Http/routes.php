@@ -15,3 +15,4 @@ Route::get('/', function () { return view('login'); });
 Route::post('login', 'UsersController@login');
 # Rutas para el administrador
 Route::resource('admin/usuarios','UsersController');
+Route::resource('admin/productos','ProductController');
