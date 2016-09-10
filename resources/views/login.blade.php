@@ -11,9 +11,11 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
-        <h1 class="title">Oro Blanco Pastelería</h1>
-        <h2>Sistema de Ventas</h2>
-        <h3>Iniciar Sesión</h3>
+        <div class="text-center">
+          <h1 class="title">Oro Blanco Pastelería</h1>
+          <h2>Sistema de Ventas</h2>
+          <h3>Iniciar Sesión</h3>
+        </div>
         @if(Session::has('error'))
           <div class="alert alert-danger alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">

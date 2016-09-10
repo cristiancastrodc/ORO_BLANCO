@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('title') | Oro Blanco Pastelería</title>
   <link href="{{ URL::asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="{{ URL::asset('https://fonts.googleapis.com/icon?family=Material+Icons') }}" rel="stylesheet">
+  <style>
+  .material-icons.md-36 { font-size: 36px; }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -27,22 +31,28 @@
             @if(Auth::user()->tipo == "admin")
               <li>
                 <a href="{{ url('/admin/productos/create') }}" class="text-center">
-                  <span class="glyphicon glyphicon-ice-lolly-tasted"></span><br>
+                  <i class="material-icons md-36">free_breakfast</i><br>
                   Crear Productos
                 </a>
               </li>
               <li>
                 <a href="{{ url('/admin/usuarios/create') }}" class="text-center">
-                  <span class="glyphicon glyphicon-user"></span><br>
+                  <i class="material-icons md-36">person_add</i><br>
                   Crear Usuarios
                 </a>
               </li>
             @endif
             @if(Auth::user()->tipo == "ventas")
               <li>
-                <a href="{{ url('/admin/usuarios/create') }}" class="text-center">
-                  <span class="glyphicon glyphicon-equalizer"></span><br>
+                <a href="{{ url('/ventas/verificar_sesion') }}" class="text-center">
+                  <i class="material-icons md-36">store</i><br>
                   Punto de Venta
+                </a>
+              </li>
+              <li>
+                <a href="{{ url('/ventas/verificar_sesion') }}" class="text-center">
+                  <i class="material-icons md-36">attach_money</i><br>
+                  Cierre de Caja
                 </a>
               </li>
             @endif
@@ -50,7 +60,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="{{ url('/logout') }}" class="text-center">
-                <span class="glyphicon glyphicon-off"></span><br>
+                <i class="material-icons md-36">power_settings_new</i><br>
                 Cerrar Sesión
               </a>
             </li>
