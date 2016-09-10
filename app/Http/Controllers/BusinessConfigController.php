@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\SaleSession;
-use Auth;
+use App\BusinessConfig;
 use Redirect;
+use Session;
 
-class SalesController extends Controller
+class BusinessConfigController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +22,7 @@ class SalesController extends Controller
      */
     public function index()
     {
-        return view('ventas.pos');
+        //
     }
 
     /**
@@ -28,7 +32,7 @@ class SalesController extends Controller
      */
     public function create()
     {
-        //
+         return view('admin.business_config.create');
     }
 
     /**
@@ -39,7 +43,17 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       BusinessConfig::create([
+            'ruc' => $request['tbRuc'],
+            'razon_social' => $request['tbRazon_Social'],
+            'direccion' => $request['tbDireccion'],
+            'telefono' => $request['tbTelefono'],
+            'eslogan' => $request['tbEslogan'],
+            ]);
+
+        //Session::flash('message', 'Datos de empresa creados correctamente.');
+        return Redirect::to('/dashboard');
+        //return 'guardado';
     }
 
     /**
@@ -85,31 +99,5 @@ class SalesController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    /**
-     * Verificar si el usuario apertura la sesión de ventas, sino redireccionar
-     */
-    public function verificarSesion() {
-        $sesion = SaleSession::recuperarSesion(Auth::user()->id);
-        if ($sesion) {
-            return Redirect::to('/ventas/punto_de_venta');
-        } else {
-            return Redirect::to('/ventas/caja/aperturar');
-        }
-    }
-
-    /**
-     * Aperturar la sesión de ventas
-     */
-    public function aperturarSesion() {
-        return view('ventas.caja.aperturar');
-    }
-
-    /**
-     * Imprimir ticket de venta
-     */
-    public function imprimirTicket() {
-        return view('ventas.ticket');
     }
 }
