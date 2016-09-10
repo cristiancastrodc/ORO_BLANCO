@@ -47,7 +47,7 @@ class ProductController extends Controller
             'codigo' => $request['tbCodigo'],
             'descripcion' => $request['tbDescripcion'],
             'descripcion_corta' => $request['tbDescripcionCorta'],
-            'precio_venta' => $request['tbPrecio'],            
+            'precio_venta' => $request['tbPrecio'],
             ]);
 
         Session::flash('message', 'Producto creado correctamente.');

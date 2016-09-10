@@ -5,12 +5,6 @@
 @endsection
 
 @section('content')
-  @if(Session::has('message'))
-    <div class="alert alert-success alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      {{ Session::get('message') }}
-    </div>
-  @endif
   <h1>Crear Usuario</h1>
   <form class="form-horizontal" method="POST" action="{{ url('/admin/usuarios') }}">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">

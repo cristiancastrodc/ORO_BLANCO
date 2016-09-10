@@ -4,19 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class SaleSession extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'products';
+    protected $table = 'sale_sessions';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['codigo', 'descripcion', 'descripcion_corta', 'precio_venta'];
+    protected $fillable = ['fecha_hora_inicio', 'id_usuario', 'monto_inicial', 'ingresos', 'egresos', 'monto_actual', 'fecha_hora_fin', 'estado'];
 }
