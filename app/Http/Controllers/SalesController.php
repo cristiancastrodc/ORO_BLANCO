@@ -142,4 +142,11 @@ class SalesController extends Controller
             "mensaje" => $venta
             ]);
     }
+
+    /**
+     * Imprimir ticket de venta
+     */
+    public function imprimirTicket() {
+        return view('ventas.ticket');
+    }
 }

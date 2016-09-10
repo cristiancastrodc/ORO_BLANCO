@@ -18,6 +18,7 @@ Route::get('dashboard', 'UsersController@dashboard');
 # Rutas para el usuario administrador
 Route::resource('admin/usuarios','UsersController');
 Route::resource('admin/productos','ProductController');
+Route::resource('admin/business_config','BusinessConfigController');
 # Rutas para el usuario de ventas
 Route::get('ventas/verificar_sesion', 'SalesController@verificarSesion');
 Route::get('ventas/punto_de_venta', 'SalesController@index');
@@ -25,3 +26,4 @@ Route::get('ventas/caja/aperturar', 'SalesController@aperturarSesion');
 Route::resource('ventas/sesion','SessionsController');
 Route::get('/ventas/productos', 'ProductController@index');
 Route::post('/ventas/punto_de_venta/guardar', 'SalesController@guardar');
+Route::get('ventas/punto_de_venta/ticket', 'SalesController@imprimirTicket');
