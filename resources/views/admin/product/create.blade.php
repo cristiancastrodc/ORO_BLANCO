@@ -5,7 +5,8 @@
 @endsection
 
 @section('content')
-  <h1>Crear Productos</h1>
+  <div class="col-sm-8">
+    <h1>Crear Productos</h1>
     <form class="form-horizontal" method="POST" action="{{ url('/admin/productos') }}">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="form-group">
@@ -42,5 +43,5 @@
         </div>
       </div>
     </form>
-
+  </div>
 @endsection

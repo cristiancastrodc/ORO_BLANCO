@@ -8,7 +8,12 @@
   <link href="{{ URL::asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="{{ URL::asset('https://fonts.googleapis.com/icon?family=Material+Icons') }}" rel="stylesheet">
   <style>
-  .material-icons.md-36 { font-size: 36px; }
+    .material-icons.md-36 { font-size: 36px; }
+    .buttons{padding: 20px;}
+    .btn {
+      white-space: normal;
+      text-transform: uppercase;
+    }
   </style>
 </head>
 <body>
@@ -69,15 +74,17 @@
       </nav>
     </div>
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-12">
         @if(Session::has('message'))
           <div class="alert alert-success alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             {{ Session::get('message') }}
           </div>
         @endif
-        @yield('content')
       </div>
+    </div>
+    <div class="row">
+      @yield('content')
     </div>
   </div>
   <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js') }}"></script>
