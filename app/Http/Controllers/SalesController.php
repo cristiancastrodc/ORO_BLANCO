@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Customer;
 use App\Product;
+use App\Sale;
+use App\SaleDetail;
 use App\SaleSession;
 use App\VoucherConfig;
 use Auth;
@@ -119,7 +121,7 @@ class SalesController extends Controller
         $venta = $request->input('venta');
         $detalle_venta = $request->input('detalle');
         $total = $request->input('total');
-        //Cliente
+        // Cliente
         $id_cliente = Customer::where('numero_documento', '=', $cliente["numero_documento"])->first();
         if ($id_cliente) {
             $id_cliente->nombre_razon_social = $cliente["nombre_razon_social"];
@@ -137,9 +139,35 @@ class SalesController extends Controller
         $voucher = VoucherConfig::where('tipo_comprobante', '=', $tipo_comprobante)->first();
         $serie_comprobante = $voucher->serie_comprobante;
         $numero_comprobante = str_pad(intval($voucher->numero_actual) + 1, 8, '0', STR_PAD_LEFT);
+        $voucher->numero_actual = $numero_comprobante;
+        $voucher->save();
+        $fecha = date("Y-m-d H:i:s");
+        $id_venta = Sale::create([
+            'tipo_comprobante' => $tipo_comprobante,
+            'serie_comprobante' => $serie_comprobante,
+            'numero_comprobante' => $numero_comprobante,
+            'fecha_hora_emision' => $fecha,
+            'id_usuario' => Auth::user()->id,
+            'id_cliente' => $id_cliente->id
+            ])->id;
+        // Detalle
+        foreach ($detalle_venta as $producto) {
+            $id = $producto["item"]["id"];
+            $descripcion = $producto["item"]["descripcion_corta"];
+            $precio = $producto["item"]["precio_venta"];
+            SaleDetail::create([
+                'id_venta' => $id_venta,
+                'id_producto' => $id,
+                'descripcion_corta' => $descripcion,
+                'cantidad' => 1,
+                'precio_unitario' => $precio,
+                'precio_total' => $precio
+                ]);
+        }
+        // Otros Montos
 
         return response()->json([
-            "mensaje" => $venta
+            "mensaje" => 'ok'
             ]);
     }
 
