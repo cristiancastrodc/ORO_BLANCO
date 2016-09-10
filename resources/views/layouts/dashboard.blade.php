@@ -24,20 +24,28 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            @if(Auth::user()->tipo == "Administrador")
+            @if(Auth::user()->tipo == "admin")
+              <li>
+                <a href="{{ url('/admin/productos/create') }}" class="text-center">
+                  <span class="glyphicon glyphicon-ice-lolly-tasted"></span><br>
+                  Crear Productos
+                </a>
+              </li>
+              <li>
+                <a href="{{ url('/admin/usuarios/create') }}" class="text-center">
+                  <span class="glyphicon glyphicon-user"></span><br>
+                  Crear Usuarios
+                </a>
+              </li>
             @endif
-            <li>
-              <a href="{{ url('/admin/productos/create') }}" class="text-center">
-                <span class="glyphicon glyphicon-ice-lolly-tasted"></span><br>
-                Crear Productos
-              </a>
-            </li>
-            <li>
-              <a href="{{ url('/admin/usuarios/create') }}" class="text-center">
-                <span class="glyphicon glyphicon-user"></span><br>
-                Crear Usuarios
-              </a>
-            </li>
+            @if(Auth::user()->tipo == "ventas")
+              <li>
+                <a href="{{ url('/admin/usuarios/create') }}" class="text-center">
+                  <span class="glyphicon glyphicon-user"></span><br>
+                  Punto de Venta
+                </a>
+              </li>
+            @endif
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>

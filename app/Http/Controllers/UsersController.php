@@ -54,7 +54,7 @@ class UsersController extends Controller
             'dni' => $request['tbDNI'],
             'nombres' => $request['tbFirstName'],
             'apellidos' => $request['tbLastName'],
-            'rol' => $request['selRole'],
+            'tipo' => $request['selRole'],
             ]);
 
         Session::flash('message', 'Usuario creado correctamente.');

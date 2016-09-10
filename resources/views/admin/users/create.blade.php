@@ -49,8 +49,8 @@
       <label for="selRole" class="col-sm-2 control-label">Rol:</label>
       <div class="col-sm-10">
         <select class="form-control" id="selRole" name="selRole">
-          <option>Administrador</option>
-          <option>Ventas</option>
+          <option value="admin">Administrador</option>
+          <option value="ventas">Ventas</option>
         </select>
       </div>
     </div>
