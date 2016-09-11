@@ -18,5 +18,5 @@ class SaleAmounts extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_venta', 'sub_total', 'igv', 'total'];
+    protected $fillable = ['id_venta', 'efectivo', 'sub_total', 'igv', 'total'];
 }

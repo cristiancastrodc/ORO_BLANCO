@@ -18,5 +18,5 @@ class Sale extends Model
      *
      * @var array
      */
-    protected $fillable = ['tipo_comprobante', 'serie_comprobante', 'numero_comprobante', 'fecha_hora_emision', 'id_usuario', 'id_cliente'];
+    protected $fillable = ['tipo_comprobante', 'serie_comprobante', 'numero_comprobante', 'fecha_hora_emision', 'id_usuario', 'id_cliente', 'esta_anulada'];
 }

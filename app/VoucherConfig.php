@@ -11,7 +11,7 @@ class VoucherConfig extends Model
      *
      * @var string
      */
-    protected $table = 'vouchers_config';
+    protected $table = 'voucher_configs';
 
     /**
      * The attributes that are mass assignable.
