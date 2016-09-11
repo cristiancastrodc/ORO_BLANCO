@@ -89,4 +89,12 @@ app.controller('POSController', function ($scope, $http, API_URL) {
         };
       })
     };
+
+    $scope.filtro = '';
+    $scope.filtrarProductos = function (argument) {
+      $http.get(API_URL + 'productos/filtrar/' + $scope.filtro)
+           .success(function(response) {
+              $scope.products = response;
+            });
+    };
 });

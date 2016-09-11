@@ -25,5 +25,6 @@ Route::get('ventas/punto_de_venta', 'SalesController@index');
 Route::get('ventas/caja/aperturar', 'SalesController@aperturarSesion');
 Route::resource('ventas/sesion','SessionsController');
 Route::get('ventas/productos', 'ProductController@index');
+Route::get('ventas/productos/filtrar/{filtro?}', 'ProductController@filtrar');
 Route::post('ventas/punto_de_venta/guardar', 'SalesController@guardar');
 Route::get('ventas/punto_de_venta/ticket/{id_venta}', 'SalesController@imprimirTicket');

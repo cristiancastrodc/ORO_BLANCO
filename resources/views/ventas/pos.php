@@ -108,6 +108,16 @@
           </div>
           <div class="panel-body">
             <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><div class="glyphicon glyphicon-search"></div></div>
+                    <input type="text" class="form-control" id="tbFiltro" placeholder="Buscar" ng-model="filtro" ng-change="filtrarProductos()" ng-model-options="{debounce:1000}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
               <div class="col-sm-6" ng-repeat="product in products">
                 <button class="buttons btn btn-block btn-primary" ng-click="add(product)">{{ product.descripcion }}</button>
               </div>

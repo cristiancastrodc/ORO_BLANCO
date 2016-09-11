@@ -98,4 +98,18 @@ class ProductController extends Controller
     {
         //
     }
+
+    /**
+     * Devolver la lista de productos filtrados
+     */
+    public function filtrar($filtro = '')
+    {
+        if ($filtro != '') {
+            return Product::where('descripcion', 'like', $filtro . '%')
+                          ->orWhere('descripcion', 'like', '% ' . $filtro . '%')
+                          ->orderBy('descripcion')->get();
+        } else {
+            return Product::orderBy('descripcion')->get();
+        }
+    }
 }
