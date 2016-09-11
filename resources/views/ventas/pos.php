@@ -190,7 +190,7 @@
               <button class="btn btn-danger" ng-click="guardar()" ng-disabled="formNoValido || guardando">
                 <span ng-hide="guardando">Finalizar</span>
                 <span ng-show="guardando">
-                  <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Grabando...
+                  <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Procesando...
                 </span>
               </button>
             </div>

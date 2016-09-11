@@ -1,0 +1,19 @@
+Ventas:
+  ☐ Cierre de Caja
+  ☐ Anulación de Venta: Con autorización del administrador
+  Punto de Venta:
+    ☐ Recuperar Cliente con DNI o RUC
+    ☐ Buscador de Productos
+    ☐ Arreglar botones de Productos
+    ☐ Impresión de tickets usando controlador y validando si la instalación es local o remota.
+    ☐ Si factura, obligatorio RUC, Razon Social y Direccion
+  Movimientos de caja:
+Admin:
+  ☐ Administración de Productos
+  ☐ Configuración empresa: Recuperar datos
+Usuario:
+  ☐ Modificar perfil
+Programacion:
+  ☐ Request
+  ☐ 404
+  ☐ Estilos

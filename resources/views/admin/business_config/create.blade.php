@@ -5,7 +5,8 @@
 @endsection
 
 @section('content')
-  <h1>Configurar Datos de Empresa</h1>
+  <div class="col-sm-8">
+    <h1>Configurar Datos de Empresa</h1>
     <form class="form-horizontal" method="POST" action="{{ url('/admin/business_config') }}">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="form-group">
@@ -44,5 +45,5 @@
         </div>
       </div>
     </form>
-
+  </div>
 @endsection
