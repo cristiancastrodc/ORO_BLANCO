@@ -46,8 +46,8 @@
             </tr>
             <tr>
               <td>{{ $producto->cantidad }} x</td>
-              <td>{{ $producto->precio_venta }}</td>
-              <td>{{ $producto->subtotal }}</td>            
+              <td>{{ $producto->precio_unitario }}</td>
+              <td>{{ $producto->precio_total }}</td>            
             </tr>
             @endforeach 
             <tr>
@@ -55,26 +55,26 @@
             </tr>         
             <tr>
               <td colspan="2">Sub_Total </td>
-              <td colspan="1">{{ $subtotal }}</td>
+              <td colspan="1">{{ $montos->subtotal }}</td>
             </tr>
             <tr>
               <td colspan="2">I.G.V. </td>
-              <td>{{ $igv }}</td>
+              <td>{{ $montos->igv }}</td>
             </tr>
             <tr>
               <p>- - - - - - - - - - - - - - - - -</p>
             </tr>
             <tr>
               <td colspan="2">Total </td>
-              <td colspan="1">{{ $total }}</td>
+              <td colspan="1">{{ $montos->total }}</td>
             </tr>
             <tr>
               <td colspan="2">Efectivo </td>
-              <td colspan="1">{{ $efectivo }}</td>
+              <td colspan="1">{{ $montos_efectivo }}</td>
             </tr>
             <tr>
               <td colspan="2">Vuelto </td>
-              <td colspan="1">{{ $vuelto }}</td>
+              <td colspan="1">{{ $montos->efectivo - $montos->total }}</td>
             </tr>
           </table>
         </div> 

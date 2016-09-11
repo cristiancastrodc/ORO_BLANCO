@@ -54,26 +54,26 @@
             </tr>         
             <tr>
               <td colspan="2">Sub_Total </td>
-              <td colspan="1">{{ $subtotal }}</td>
+              <td colspan="1">{{ $montos->subtotal }}</td>
             </tr>
             <tr>
               <td colspan="2">I.G.V. </td>
-              <td>{{ $igv }}</td>
+              <td>{{ $montos->igv }}</td>
             </tr>
             <tr>
               <p>- - - - - - - - - - - - - - - - -</p>
             </tr>
             <tr>
               <td colspan="2">Total </td>
-              <td colspan="1">S/. {{ $total }}</td>
+              <td colspan="1">S/. {{ $montos->total }}</td>
             </tr>
             <tr>
               <td colspan="2">Efectivo </td>
-              <td colspan="1">{{ $efectivo }}</td>
+              <td colspan="1">{{ $montos->efectivo }}</td>
             </tr>
             <tr>
               <td colspan="2">Vuelto </td>
-              <td colspan="1">{{ $vuelto }}</td>
+              <td colspan="1">{{ $montos->efectivo - $montos->total }}</td>
             </tr>
           </table>
         </div>
