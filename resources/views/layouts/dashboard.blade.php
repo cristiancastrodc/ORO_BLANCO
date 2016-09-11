@@ -21,7 +21,7 @@
 <body>
   <div class="container">
     <div class="row">
-      <nav class="navbar purple lighten-3">
+      <nav class="navbar pink lighten-2">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header visible-xs">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
