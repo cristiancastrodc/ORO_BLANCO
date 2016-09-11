@@ -61,7 +61,7 @@
                 </a>
               </li>
               <li>
-                <a href="{{ url('/ventas/verificar_sesion') }}" class="text-center">
+                <a href="{{ url('/ventas/caja/cierre') }}" class="text-center">
                   <i class="material-icons md-36">attach_money</i><br>
                   Cierre de Caja
                 </a>

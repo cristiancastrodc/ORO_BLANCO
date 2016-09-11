@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\SaleSession;
 use Auth;
 use Redirect;
+use Session;
+use User;
 
 class SessionsController extends Controller
 {
@@ -93,5 +95,42 @@ class SessionsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function cerraCaja()
+    {
+        $sesion = SaleSession::where('id_usuario', '=', Auth::user()->id)
+                             ->where('estado','=', 'abierta')
+                             ->first();
+        if ($sesion) {
+            return view('ventas.caja.cierre');           
+        
+        }else{
+            Session::flash('message', 'No se encontro ninguna caja con sesión aperturada.');
+            return Redirect::to('/dashboard');
+        }
+    }
+
+    public function confimarCierre()
+    {
+        $fecha_hora_fin = date("Y-m-d H:i:s");
+        $sesion = SaleSession::where('id_usuario', '=', Auth::user()->id)
+                             ->where('estado','=', 'abierta')
+                             ->first();
+
+        $sesion->fecha_hora_fin = $fecha_hora_fin;
+        $sesion->estado = 'cerrada';
+        $sesion->save();
+
+        Session::flash('message', 'Caja Cerrada Correctamente.');
+        return Redirect::to('/ventas/resumen_sesion/' . $sesion->id);
+    }
+
+    public function resumenCaja($id_sesion)
+    {
+        $sesion = SaleSession::find($id_sesion);
+        $usuario = User::find($sesion->id_usuario);
+        $nombre = $usuario->nombre . ' ' . $usuario->apellidos;
+        return view('ventas.caja.resumen', compact('sesion', 'nombre'));
     }
 }

@@ -28,3 +28,6 @@ Route::get('ventas/productos', 'ProductController@index');
 Route::get('ventas/productos/filtrar/{filtro?}', 'ProductController@filtrar');
 Route::post('ventas/punto_de_venta/guardar', 'SalesController@guardar');
 Route::get('ventas/punto_de_venta/ticket/{id_venta}', 'SalesController@imprimirTicket');
+Route::get('ventas/caja/cierre', 'SessionsController@cerraCaja');
+Route::post('ventas/cerrar', 'SessionsController@confimarCierre');
+Route::get('ventas/resumen_sesion/{id_sesion}', 'SessionsController@resumenCaja');
