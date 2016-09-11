@@ -29,82 +29,138 @@
           <p class="text-center"><small>{{ $razon_social }}</small></p>
           <p class="text-center">RUC:{{ $ruc }}</p>
           <p class="text-center">{{ $direccion}}</p>
-          <p class="text-center">=================================</p>
-          <p class="text-center">{{ $fecha_emision }}</p>
-          <p class="text-center">Ticket Nro.: {{ $comprobante }}</p>
-          <p class="text-center">Nro. Serie: FFCF280715</p>
-          <p class="text-center">RUC:{{ $cliente->numero_documento }}</p>
-          <p class="text-center">Razon Social: {{ $cliente->razon_social }}</p>
-          <p class="text-center">Direccion: {{ $cliente->direccion }}</p>
+          <p class="text-center">--------------------------------</p>
+          <p>{{ $fecha_emision }}</p>
+          <p>Ticket Nro.: {{ $comprobante }}</p>
+          <p>Nro. Serie: FFCF280715</p>
+          <p>RUC:{{ $cliente->numero_documento }}</p>
+          <p>Razon Social: {{ $cliente->razon_social }}</p>
+          <p>Direccion: {{ $cliente->direccion }}</p>
           <p class="text-center">=================================</p>
         </div>
         <div class="col-sm-4 col-sm-offset-4">
           <table>
             @foreach($productos as $producto)
             <tr>
-              <td colspan="3">{{ $producto->descripcion_corta }}</td>
+              <td colspan="2">{{ $producto->descripcion_corta }}</td>
             </tr>
             <tr>
-              <td>{{ $producto->cantidad }} x</td>
-              <td>{{ $producto->precio_unitario }}</td>
-              <td>{{ $producto->precio_total }}</td>
+              <td>{{ $producto->cantidad }} x {{ $producto->precio_unitario }}</td>
+              <td class="text-right">{{ $producto->precio_total }}</td>
             </tr>
             @endforeach
             <tr>
-              <td>- - - - - - - - - - - - - - - - -</td>
+              <td colspan="2" class="text-right">--------------</td>
             </tr>
             <tr>
-              <td colspan="2">Sub_Total </td>
-              <td colspan="1">{{ $montos->subtotal }}</td>
+              <td>Sub_Total </td>
+               <td class="text-right">{{ $montos->sub_total }}</td>
             </tr>
             <tr>
-              <td colspan="2">I.G.V. </td>
-              <td>{{ $montos->igv }}</td>
+              <td>I.G.V. </td>
+              <td class="text-right">{{ $montos->igv }}</td>
             </tr>
             <tr>
-              <p>- - - - - - - - - - - - - - - - -</p>
+              <td colspan="2">- - - - - - - - - - - - - - - - -</td>
             </tr>
             <tr>
-              <td colspan="2">Total </td>
-              <td colspan="1">{{ $montos->total }}</td>
+              <td>Total </td>
+              <td class="text-right">S/. {{ $montos->total }}</td>
             </tr>
             <tr>
-              <td colspan="2">Efectivo </td>
-              <td colspan="1">{{ $montos_efectivo }}</td>
+              <td>Efectivo </td>
+              <td class="text-right">{{ $montos->efectivo }}</td>
             </tr>
             <tr>
-              <td colspan="2">Vuelto </td>
-              <td colspan="1">{{ $montos->efectivo - $montos->total }}</td>
+              <td>Vuelto </td>
+              <td class="text-right">{{ number_format(($montos->efectivo - $montos->total), 2) }}</td>
             </tr>
           </table>
         </div>
       </div>
-      <div class="hidden-print">
+      <div class="col-sm-12 hidden-print"> 
         <h1>Resumen de la Operación</h1>
-          <div >
-            <label class="col-sm-2 control-label">RUC:</label>
-            <div class="col-sm-10">
-              <p class="form-control-static">{{ $cliente->numero_documento }}</p>
-            </div>
-            <label class="col-sm-2 control-label">Razon Social:</label>
-            <div class="col-sm-10">
-              <p class="form-control-static">{{ $cliente->razon_social }}</p>
-            </div>
-            <label class="col-sm-2 control-label">Direccion:</label>
-            <div class="col-sm-10">
-              <p class="form-control-static">{{ $cliente->direccion }}</p>
-            </div>
-            <label class="col-sm-2 control-label">Ticket Nro.:</label>
-            <div class="col-sm-10">
-              <p class="form-control-static">{{ $comprobante }}</p>
-            </div>
-            <label class="col-sm-2 control-label">Total:</label>
-            <div class="col-sm-10">
-              <p class="form-control-static">S/. {{ $total }}</p>
-            </div>
+        <div class="row">
+          <label class="col-sm-2 control-label">RUC:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ $cliente->numero_documento }}</p>
           </div>
+          <label class="col-sm-2 control-label">Razon Social:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ $cliente->razon_social }}</p>
+          </div>
+          <label class="col-sm-2 control-label">Direccion:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ $cliente->direccion }}</p>
+          </div>
+          <label class="col-sm-2 control-label">Ticket Nro.:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ $comprobante }}</p>
+          </div>
+          <label class="col-sm-2 control-label">Total:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">S/. {{ $montos->total }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</body>
-</html>
+@endsection
+
+@section('scripts')
+  <script>
+    window.onload = function() { window.print(); }
+  </script>
+@endsection
+<tr>
+              <td>I.G.V. </td>
+              <td class="text-right">{{ $montos->igv }}</td>
+            </tr>
+            <tr>
+              <td colspan="2">- - - - - - - - - - - - - - - - -</td>
+            </tr>
+            <tr>
+              <td>Total </td>
+              <td class="text-right">S/. {{ $montos->total }}</td>
+            </tr>
+            <tr>
+              <td>Efectivo </td>
+              <td class="text-right">{{ $montos->efectivo }}</td>
+            </tr>
+            <tr>
+              <td>Vuelto </td>
+              <td class="text-right">{{ number_format(($montos->efectivo - $montos->total), 2) }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-sm-12 hidden-print"> 
+        <h1>Resumen de la Operación</h1>
+        <div class="row">
+          <label class="col-sm-2 control-label">Nro. Documento:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ $cliente_numero_documento }}</p>
+          </div>
+          <label class="col-sm-2 control-label">Cliente:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ $cliente_razon_social }}</p>
+          </div>
+          <label class="col-sm-2 control-label">Ticket Nro.:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ $comprobante }}</p>
+          </div>
+          <label class="col-sm-2 control-label">Total:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">S/. {{ $montos->total }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
+
+@section('scripts')
+  <script>
+    window.onload = function() { window.print(); }
+  </script>
+@endsection

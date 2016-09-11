@@ -237,11 +237,17 @@ class SalesController extends Controller
         $fecha_emision = $venta->fecha_hora_emision;
         $comprobante = $venta->numero_comprobante;
         $cliente = Customer::find($venta->id_cliente);
+        $cliente_numero_documento = '';
+        $cliente_razon_social = '';
+        if ($cliente) {
+            $cliente_numero_documento = $cliente->numero_documento;
+            $cliente_razon_social = $cliente->razon_social;
+        }
         $productos = SaleDetail::where('id_venta', '=', $id_venta)->get();
         $montos = SaleAmounts::find($id_venta);
         // Validar para boletas o facturas
         if ($venta->tipo_comprobante == 'boleta') {
-            return view('ventas.ticket', compact('razon_social', 'ruc', 'direccion', 'fecha_emision', 'comprobante', 'cliente', 'productos', 'montos'));
+            return view('ventas.ticket', compact('razon_social', 'ruc', 'direccion', 'fecha_emision', 'comprobante', 'cliente_numero_documento', 'cliente_razon_social', 'productos', 'montos'));
         } else {
             return view('ventas.ticket_factura', compact('razon_social', 'ruc', 'direccion', 'fecha_emision', 'comprobante', 'cliente', 'productos', 'montos'));
         }
