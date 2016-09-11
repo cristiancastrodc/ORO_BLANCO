@@ -48,7 +48,7 @@
               </li>
               <li>
                 <a href="{{ url('/admin/business_config/create') }}" class="text-center">
-                  <i class="material-icons md-36">free_breakfast</i><br>
+                  <i class="material-icons md-36">business</i><br>
                   Configuracion Empresa
                 </a>
               </li>
