@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-  Ticket
+  Ticket Factura
 @endsection
 @section('content')
   <style>
@@ -33,8 +33,9 @@
           <p class="text-center">{{ $fecha_emision }}</p>
           <p class="text-center">Ticket Nro.: {{ $comprobante }}</p>
           <p class="text-center">Nro. Serie: FFCF280715</p>
-          <p class="text-center">Nro. Documento:{{ $cliente->numero_documento }}</p>
-          <p class="text-center">Cliente: {{ $cliente->razon_social }}</p>
+          <p class="text-center">RUC:{{ $cliente->numero_documento }}</p>
+          <p class="text-center">Razon Social: {{ $cliente->razon_social }}</p>
+          <p class="text-center">Direccion: {{ $cliente->direccion }}</p>
           <p class="text-center">=================================</p>
         </div>
         <div class="col-sm-4 col-sm-offset-4">
@@ -65,29 +66,33 @@
             </tr>
             <tr>
               <td colspan="2">Total </td>
-              <td colspan="1">S/. {{ $montos->total }}</td>
+              <td colspan="1">{{ $montos->total }}</td>
             </tr>
             <tr>
               <td colspan="2">Efectivo </td>
-              <td colspan="1">{{ $montos->efectivo }}</td>
+              <td colspan="1">{{ $montos_efectivo }}</td>
             </tr>
             <tr>
               <td colspan="2">Vuelto </td>
               <td colspan="1">{{ $montos->efectivo - $montos->total }}</td>
             </tr>
           </table>
-        </div>
+        </div> 
       </div>
       <div class="hidden-print"> 
         <h1>Resumen de la Operación</h1>
           <div >
-            <label class="col-sm-2 control-label">Nro. Documento:</label>
+            <label class="col-sm-2 control-label">RUC:</label>
             <div class="col-sm-10">
               <p class="form-control-static">{{ $cliente->numero_documento }}</p>
             </div>
-            <label class="col-sm-2 control-label">Cliente:</label>
+            <label class="col-sm-2 control-label">Razon Social:</label>
             <div class="col-sm-10">
               <p class="form-control-static">{{ $cliente->razon_social }}</p>
+            </div>
+            <label class="col-sm-2 control-label">Direccion:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static">{{ $cliente->direccion }}</p>
             </div>
             <label class="col-sm-2 control-label">Ticket Nro.:</label>
             <div class="col-sm-10">
@@ -100,5 +105,6 @@
           </div>         
       </div>
     </div>
-  </div> 
-@endsection
+  </div>
+</body>
+</html>
