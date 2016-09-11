@@ -45,8 +45,8 @@
             </tr>
             <tr>
               <td>{{ $producto->cantidad }} x</td>
-              <td>{{ $producto->precio_venta }}</td>
-              <td>{{ $producto->subtotal }}</td>            
+              <td>{{ $producto->precio_unitario }}</td>
+              <td>{{ $producto->precio_total }}</td>            
             </tr>
             @endforeach 
             <tr>
