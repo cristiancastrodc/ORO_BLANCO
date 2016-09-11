@@ -7,6 +7,8 @@
   <title>Punto de Venta | Oro Blanco Pastelería</title>
   <link href="<?php echo asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') ?>" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="<?php echo asset('https://fonts.googleapis.com/icon?family=Material+Icons'); ?>" rel="stylesheet">
+  <link href="<?php echo asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'); ?>" rel="stylesheet">
+  <link href="<?php echo asset('css/mdb.min.css'); ?>" rel="stylesheet">
   <style>
     .material-icons.md-36 { font-size: 36px; }
     .buttons{padding: 20px;}
@@ -29,12 +31,15 @@
         from { transform: scale(1) rotate(0deg);}
         to { transform: scale(1) rotate(360deg);}
     }
+    .products:hover {
+      cursor: pointer;
+    }
   </style>
 </head>
 <body data-ng-controller="POSController">
   <div class="container">
     <div class="row">
-      <nav class="navbar navbar-default">
+      <nav class="navbar pink lighten-2">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header visible-xs">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -55,7 +60,7 @@
               </a>
             </li>
             <li>
-              <a href="<?php url('/ventas/verificar_sesion'); ?>" class="text-center">
+              <a href="<?php echo url('/ventas/caja/cierre'); ?>" class="text-center">
                 <i class="material-icons md-36">attach_money</i><br>
                 Cierre de Caja
               </a>
@@ -74,8 +79,8 @@
     </div>
     <div class="row">
       <div class="col-sm-6">
-        <div class="panel panel-danger">
-          <div class="panel-heading">
+        <div class="panel">
+          <div class="panel-heading cyan lighten-2">
             <h3 class="panel-title">Venta</h3>
           </div>
           <div class="panel-body">
@@ -102,8 +107,8 @@
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
+        <div class="panel">
+          <div class="panel-heading cyan lighten-2">
             <h3 class="panel-title">Productos</h3>
           </div>
           <div class="panel-body">
@@ -119,7 +124,9 @@
             </div>
             <div class="row">
               <div class="col-sm-6" ng-repeat="product in products">
-                <button class="buttons btn btn-block btn-primary" ng-click="add(product)">{{ product.descripcion }}</button>
+                <div class="card-panel default-color text-center text-uppercase products" ng-click="add(product)">
+                  <span class="white-text">{{ product.descripcion }}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -210,6 +217,7 @@
   <script src="<?php echo asset('https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js'); ?>" ></script>
   <script src="<?php echo asset('https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'); ?>"></script>
   <script src="<?php echo asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'); ?>" ></script>
+  <script src="<?php echo asset('js/mdb.min.js'); ?>"></script>
   <script src="<?php echo asset('js/app.js'); ?>" ></script>
 </body>
 </html>

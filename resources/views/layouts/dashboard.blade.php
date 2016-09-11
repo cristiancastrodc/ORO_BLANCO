@@ -7,6 +7,8 @@
   <title>@yield('title') | Oro Blanco Pastelería</title>
   <link href="{{ URL::asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="{{ URL::asset('https://fonts.googleapis.com/icon?family=Material+Icons') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ URL::asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('css/mdb.min.css') }}">
   <style>
     .material-icons.md-36 { font-size: 36px; }
     .buttons{padding: 20px;}
@@ -19,7 +21,7 @@
 <body>
   <div class="container">
     <div class="row">
-      <nav class="navbar navbar-default">
+      <nav class="navbar purple lighten-3">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header visible-xs">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -95,6 +97,7 @@
   </div>
   <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js') }}"></script>
   <script src="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') }}" ></script>
+  <script src="{{ asset('js/mdb.min.js') }}" ></script>
   @yield('scripts')
 </body>
 </html>
