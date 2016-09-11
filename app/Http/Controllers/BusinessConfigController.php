@@ -43,15 +43,26 @@ class BusinessConfigController extends Controller
      */
     public function store(Request $request)
     {
-       BusinessConfig::create([
+        $id_empresa = BusinessConfig::find(1);
+
+        if ($id_empresa) {
+            $id_empresa->ruc = $request['tbRuc'];
+            $id_empresa->razon_social = $request['tbRazon_Social'];
+            $id_empresa->direccion = $request['tbDireccion'];
+            $id_empresa->telefono = $request['tbTelefono'];
+            $id_empresa->eslogan = $request['tbEslogan'];
+            $id_empresa->save();
+        } else {
+            BusinessConfig::create([
             'ruc' => $request['tbRuc'],
             'razon_social' => $request['tbRazon_Social'],
             'direccion' => $request['tbDireccion'],
             'telefono' => $request['tbTelefono'],
             'eslogan' => $request['tbEslogan'],
             ]);
+        }
 
-        //Session::flash('message', 'Datos de empresa creados correctamente.');
+        Session::flash('message', 'Datos de empresa guardados correctamente.');
         return Redirect::to('/dashboard');
         //return 'guardado';
     }
