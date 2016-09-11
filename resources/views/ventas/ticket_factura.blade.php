@@ -17,7 +17,7 @@
   @media print {
     .ticket {
       font-size: 10px;
-    }    
+    }
   }
   </style>
   <div class="container">
@@ -47,12 +47,12 @@
             <tr>
               <td>{{ $producto->cantidad }} x</td>
               <td>{{ $producto->precio_unitario }}</td>
-              <td>{{ $producto->precio_total }}</td>            
+              <td>{{ $producto->precio_total }}</td>
             </tr>
-            @endforeach 
+            @endforeach
             <tr>
               <td>- - - - - - - - - - - - - - - - -</td>
-            </tr>         
+            </tr>
             <tr>
               <td colspan="2">Sub_Total </td>
               <td colspan="1">{{ $montos->subtotal }}</td>
@@ -77,9 +77,9 @@
               <td colspan="1">{{ $montos->efectivo - $montos->total }}</td>
             </tr>
           </table>
-        </div> 
+        </div>
       </div>
-      <div class="hidden-print"> 
+      <div class="hidden-print">
         <h1>Resumen de la Operación</h1>
           <div >
             <label class="col-sm-2 control-label">RUC:</label>
@@ -101,8 +101,8 @@
             <label class="col-sm-2 control-label">Total:</label>
             <div class="col-sm-10">
               <p class="form-control-static">S/. {{ $total }}</p>
-            </div>            
-          </div>         
+            </div>
+          </div>
       </div>
     </div>
   </div>
