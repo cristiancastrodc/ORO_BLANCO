@@ -1,16 +1,20 @@
 Ventas:
-  ☐ Cierre de Caja
+  ✔ Cierre de Caja @done (16-09-13 07:42)
   ☐ Anulación de Venta: Con autorización del administrador
   Punto de Venta:
     ☐ Recuperar Cliente con DNI o RUC
     ✔ Buscador de Productos @done (16-09-11 05:58)
-    ☐ Arreglar botones de Productos
+    ✔ Arreglar botones de Productos @done (16-09-13 07:32)
     ☐ Impresión de tickets usando controlador y validando si la instalación es local o remota.
     ☐ Si factura, obligatorio RUC, Razon Social y Direccion
+    ☐ Poner el focus al abrir el modal
+    ✔ Si no hay DNI, no permitir nombre ni dirección. @done (16-09-13 07:39)
+    ✘ Verificar los valores que se envían al ticket @cancelled (16-09-13 07:41)
   Movimientos de caja:
 Admin:
   ☐ Administración de Productos
-  ☐ Configuración empresa: Recuperar datos
+  ✔ Configuración empresa: Recuperar datos @done (16-09-13 07:43)
+  ☐ Generar Backups de la Base de Datos
 Usuario:
   ☐ Modificar perfil
 Programacion:

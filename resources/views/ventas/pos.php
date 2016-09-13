@@ -31,6 +31,9 @@
         from { transform: scale(1) rotate(0deg);}
         to { transform: scale(1) rotate(360deg);}
     }
+    .products {
+      min-height: 100px;
+    }
     .products:hover {
       cursor: pointer;
     }
@@ -123,7 +126,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6" ng-repeat="product in products">
+              <div class="col-sm-4" ng-repeat="product in products">
                 <div class="card-panel default-color text-center text-uppercase products" ng-click="add(product)">
                   <span class="white-text">{{ product.descripcion }}</span>
                 </div>
@@ -162,21 +165,21 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="tbNombreRazonSocial" class="col-sm-3 control-label">Nombre o Razón Social:</label>
+                  <label for="tbNumeroDocumento" class="col-sm-3 control-label">DNI o RUC:</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="tbNombreRazonSocial" name="tbNombreRazonSocial" ng-model="cliente.nombre_razon_social">
+                    <input type="text" class="form-control" id="tbNumeroDocumento" name="tbNumeroDocumento" ng-model="cliente.numero_documento" ng-change="validarDocumento()">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="tbNumeroDocumento" class="col-sm-3 control-label">DNI o RUC:</label>
+                  <label for="tbNombreRazonSocial" class="col-sm-3 control-label">Nombre o Razón Social:</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="tbNumeroDocumento" name="tbNumeroDocumento" ng-model="cliente.numero_documento">
+                    <input type="text" class="form-control" id="tbNombreRazonSocial" name="tbNombreRazonSocial" ng-model="cliente.nombre_razon_social" ng-disabled="sinDocumento">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="tbDireccion" class="col-sm-3 control-label">Direccion:</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="tbDireccion" name="tbDireccion"  ng-model="cliente.direccion">
+                    <input type="text" class="form-control" id="tbDireccion" name="tbDireccion" ng-model="cliente.direccion" ng-disabled="sinDocumento">
                   </div>
                 </div>
                 <div class="form-group">
@@ -204,9 +207,9 @@
             </div>
             <div class="modal-footer">
               <a class="btn btn-link" data-dismiss="modal">Cancelar</a>
-              <button class="btn btn-danger" ng-click="guardar()" ng-disabled="formNoValido || guardando">
-                <span ng-hide="guardando">Finalizar</span>
-                <span ng-show="guardando">
+              <button class="btn btn-danger" ng-click="procesar()" ng-disabled="formNoValido || procesando">
+                <span ng-hide="procesando">Finalizar</span>
+                <span ng-show="procesando">
                   <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Procesando...
                 </span>
               </button>

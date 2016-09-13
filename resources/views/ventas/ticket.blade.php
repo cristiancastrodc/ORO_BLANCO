@@ -17,7 +17,10 @@
   @media print {
     .ticket {
       font-size: 10px;
-    }    
+    }
+    p {
+      margin-bottom: 0;
+    }
   }
   </style>
   <div class="container">
@@ -29,7 +32,7 @@
           <p class="text-center"><small>{{ $razon_social }}</small></p>
           <p class="text-center">RUC:{{ $ruc }}</p>
           <p class="text-center">{{ $direccion}}</p>
-          <p class="text-center">---------------------------------</p>
+          <p class="text-center">-----------------------------</p>
           <p>{{ $fecha_emision }}</p>
           <p>Ticket Nro.: {{ $comprobante }}</p>
           <p>Nro. Serie: FFCF280715</p>
@@ -47,7 +50,7 @@
               <td>{{ $producto->cantidad }} x {{ $producto->precio_unitario }}</td>
               <td class="text-right">{{ $producto->precio_total }}</td>
             </tr>
-            @endforeach 
+            @endforeach
             <tr>
               <td colspan="2" class="text-right">--------------</td>
             </tr>
@@ -77,7 +80,7 @@
           </table>
         </div>
       </div>
-      <div class="col-sm-12 hidden-print"> 
+      <div class="col-sm-12 hidden-print">
         <h1>Resumen de la Operación</h1>
         <div class="row">
           <label class="col-sm-2 control-label">Nro. Documento:</label>

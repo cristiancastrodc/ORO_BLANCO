@@ -103,8 +103,8 @@ class SessionsController extends Controller
                              ->where('estado','=', 'abierta')
                              ->first();
         if ($sesion) {
-            return view('ventas.caja.cierre');           
-        
+            return view('ventas.caja.cierre');
+
         }else{
             Session::flash('message', 'No se encontro ninguna caja con sesión aperturada.');
             return Redirect::to('/dashboard');

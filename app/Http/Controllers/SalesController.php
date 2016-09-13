@@ -26,9 +26,12 @@ class SalesController extends Controller
      */
     public function index()
     {
-        //$products = Product::orderBy('descripcion')->get();
-        //return view('ventas.pos1', compact('products'));
-        return view('ventas.pos');
+        $sesion = SaleSession::recuperarSesion(Auth::user()->id);
+        if ($sesion) {
+            return view('ventas.pos');
+        } else {
+            return Redirect::to('/ventas/caja/aperturar');
+        }
     }
 
     /**
@@ -244,7 +247,8 @@ class SalesController extends Controller
             $cliente_razon_social = $cliente->razon_social;
         }
         $productos = SaleDetail::where('id_venta', '=', $id_venta)->get();
-        $montos = SaleAmounts::find($id_venta);
+        //$montos = SaleAmounts::find($id_venta);
+        $montos = SaleAmounts::where('id_venta', '=', $id_venta)->first();
         // Validar para boletas o facturas
         if ($venta->tipo_comprobante == 'boleta') {
             return view('ventas.ticket', compact('razon_social', 'ruc', 'direccion', 'fecha_emision', 'comprobante', 'cliente_numero_documento', 'cliente_razon_social', 'productos', 'montos'));
