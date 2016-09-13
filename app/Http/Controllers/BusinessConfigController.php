@@ -32,7 +32,20 @@ class BusinessConfigController extends Controller
      */
     public function create()
     {
-         return view('admin.business_config.create');
+        $configuracion = BusinessConfig::find(1);
+        $ruc = '';
+        $razon_social = '';
+        $direccion = '';
+        $telefono = '';
+        $eslogan = '';
+        if ($configuracion) {
+            $ruc = $configuracion->ruc;
+            $razon_social = $configuracion->razon_social;
+            $direccion = $configuracion->direccion;
+            $telefono = $configuracion->telefono;
+            $eslogan = $configuracion->eslogan;
+        }
+        return view('admin.business_config.create', compact('ruc', 'razon_social', 'direccion', 'telefono', 'eslogan'));
     }
 
     /**

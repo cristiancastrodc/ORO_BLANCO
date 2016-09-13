@@ -9,7 +9,7 @@ use App\SaleSession;
 use Auth;
 use Redirect;
 use Session;
-use User;
+use App\User;
 
 class SessionsController extends Controller
 {
