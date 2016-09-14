@@ -36,8 +36,11 @@ app.controller('POSController', function ($scope, $http, API_URL) {
   };
   // Función que muestra el modal resumen para finalizar la venta
   $scope.checkout = function(index) {
-    $('#myModal').modal('show');
+    $('#modalPago').modal('show');
   };
+  $('#modalPago').on('shown.bs.modal', function () {
+    $('#tbNumeroDocumento').focus()
+  });
   // Función que vacía la orden
   $scope.clearOrder = function() {
     $scope.order = [];
@@ -122,5 +125,23 @@ app.controller('POSController', function ($scope, $http, API_URL) {
       $scope.cliente.nombre_razon_social = '';
       $scope.cliente.direccion = '';
     };
+  };
+  // Función para intentar recuperar un Cliente
+  $scope.procesandoCliente = false;
+  $scope.recuperarCliente = function (argument) {
+    $scope.procesandoCliente = true;
+    $http.get(API_URL + 'punto_de_venta/cliente/' + $scope.cliente.numero_documento)
+    .success(function(response) {
+      if (response) {
+        $scope.cliente = response;
+      } else {
+        console.log('No existe cliente.');
+        $scope.cliente.nombre_razon_social = '';
+        $scope.cliente.direccion = '';
+      }
+    })
+    .finally(function () {
+      $scope.procesandoCliente = false;
+    });
   };
 });
