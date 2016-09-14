@@ -19,6 +19,9 @@ Route::get('dashboard', 'UsersController@dashboard');
 Route::resource('admin/usuarios','UsersController');
 Route::resource('admin/productos','ProductController');
 Route::resource('admin/business_config','BusinessConfigController');
+Route::get('admin/anulacion', 'SalesController@anulacion');
+Route::get('admin/mostrar_venta', 'SalesController@mostrarVenta');
+Route::post('admin/anular', 'SalesController@anularVenta');
 # Rutas para el usuario de ventas
 Route::get('ventas/verificar_sesion', 'SalesController@verificarSesion');
 Route::get('ventas/punto_de_venta', 'SalesController@index');

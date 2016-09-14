@@ -54,6 +54,12 @@
                   Configuracion Empresa
                 </a>
               </li>
+              <li>
+                <a href="{{ url('/admin/anulacion') }}" class="text-center">
+                  <i class="material-icons md-36">attach_money</i><br>
+                  Anular Ticket
+                </a>
+              </li>
             @endif
             @if(Auth::user()->tipo == "ventas")
               <li>
@@ -67,7 +73,7 @@
                   <i class="material-icons md-36">attach_money</i><br>
                   Cierre de Caja
                 </a>
-              </li>
+              </li>              
             @endif
           </ul>
           <ul class="nav navbar-nav navbar-right">

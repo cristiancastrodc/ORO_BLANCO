@@ -13,6 +13,7 @@ use App\SaleAmounts;
 use App\SaleDetail;
 use App\SaleSession;
 use App\VoucherConfig;
+use Session;
 use Auth;
 use DB;
 use Redirect;
@@ -254,6 +255,58 @@ class SalesController extends Controller
             return view('ventas.ticket', compact('razon_social', 'ruc', 'direccion', 'fecha_emision', 'comprobante', 'cliente_numero_documento', 'cliente_razon_social', 'productos', 'montos'));
         } else {
             return view('ventas.ticket_factura', compact('razon_social', 'ruc', 'direccion', 'fecha_emision', 'comprobante', 'cliente', 'productos', 'montos'));
+        }
+    }
+
+    /**
+    * Anular Venta
+    */
+    public function anulacion()
+    {
+        return view('admin.cancel.anulacion');
+    }
+
+    public function mostrarVenta(Request $request)
+    {
+        $id_ticket = Sale::where('numero_comprobante', '=', $request['tbTicket'])
+                    ->where('esta_anulada', '=', false)
+                    ->first();      
+
+        if ($id_ticket) {            
+            $detalle = SaleDetail::where('id_venta', '=', $id_ticket->id)
+                        ->get();
+            $amounts = SaleAmounts::where('id_venta', '=', $id_ticket->id)
+                        ->first();
+            return view('admin.cancel.detalle_venta', compact('id_ticket', 'detalle', 'amounts'));
+        } else {
+            Session::flash('message', 'No se encontro ninguna venta con ese numero de ticket o el ticket ya fué anulado.');
+            return Redirect::to('/dashboard');
+        }
+    }
+
+    public function anularVenta(Request $request)
+    {
+        $id_ticket = Sale::where('numero_comprobante', '=', $request['tbTicket'])
+                    ->first();
+        $egreso = SaleSession::where('estado', '=', 'abierta')
+                ->first();
+        $amounts = SaleAmounts::where('id_venta', '=', $id_ticket->id)
+                        ->first();
+        $monto = $amounts->total;
+        if ($id_ticket) {
+            if($egreso){
+                $id_ticket->esta_anulada = true;
+                $id_ticket->save();
+
+                $egreso->egresos = $monto;
+                $egreso->save();
+
+                Session::flash('message', 'Venta anulada correctamente.');
+                return Redirect::to('/dashboard');
+            }
+        } else{
+            Session::flash('message', 'No se pudo anulada la venta.');
+            return Redirect::to('/dashboard');
         }
     }
 }
