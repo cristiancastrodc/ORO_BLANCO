@@ -145,12 +145,14 @@ class SalesController extends Controller
                     $cliente_aux->direccion = $cliente["direccion"];
                     $cliente_aux->save();
                 } else {
-                    $id_cliente =
-                    Customer::create([
-                    'nombre_razon_social' => $cliente["nombre_razon_social"],
-                    'numero_documento' => $cliente["numero_documento"],
-                    'direccion' => $cliente["direccion"]
-                    ])->id;
+                    if ($cliente["nombre_razon_social"] != "") {
+                      $id_cliente =
+                      Customer::create([
+                      'nombre_razon_social' => $cliente["nombre_razon_social"],
+                      'numero_documento' => $cliente["numero_documento"],
+                      'direccion' => $cliente["direccion"]
+                      ])->id;
+                    }
                 }
             }
             // Venta

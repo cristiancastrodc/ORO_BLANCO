@@ -10,7 +10,7 @@ Ventas:
     ✔ Poner el focus al abrir el modal @done (16-09-13 21:30)
     ✔ Si no hay DNI, no permitir nombre ni dirección. @done (16-09-13 07:39)
     ✘ Verificar los valores que se envían al ticket @cancelled (16-09-13 07:41)
-    ☐ No guardar cliente vacío
+    ✔ No guardar cliente vacío @done (16-09-14 03:52)
   Movimientos de caja:
 Admin:
   ☐ Administración de Productos

@@ -174,8 +174,8 @@
                   <label for="tbNombreRazonSocial" class="col-sm-3 control-label">Nombre o Razón Social:</label>
                   <div class="col-sm-9 input-field">
                     <i class="material-icons prefix">
-                      <span ng-hide="procesandoCliente">account_circle</span>
-                      <span ng-show="procesandoCliente">autorenew</span>
+                      <span ng-hide="procesandoCliente && !sinDocumento">account_circle</span>
+                      <span ng-show="procesandoCliente && !sinDocumento">autorenew</span>
                     </i>
                     <input type="text" class="form-control" id="tbNombreRazonSocial" name="tbNombreRazonSocial" ng-model="cliente.nombre_razon_social" ng-disabled="sinDocumento">
                   </div>
@@ -184,8 +184,8 @@
                   <label for="tbDireccion" class="col-sm-3 control-label">Direccion:</label>
                   <div class="col-sm-9 input-field">
                     <i class="material-icons prefix">
-                      <span ng-hide="procesandoCliente">home</span>
-                      <span ng-show="procesandoCliente">autorenew</span>
+                      <span ng-hide="procesandoCliente && !sinDocumento">home</span>
+                      <span ng-show="procesandoCliente && !sinDocumento">autorenew</span>
                     </i>
                     <input type="text" class="form-control" id="tbDireccion" name="tbDireccion" ng-model="cliente.direccion" ng-disabled="sinDocumento">
                   </div>
