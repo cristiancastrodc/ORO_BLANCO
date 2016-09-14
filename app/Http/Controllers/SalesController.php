@@ -256,4 +256,13 @@ class SalesController extends Controller
             return view('ventas.ticket_factura', compact('razon_social', 'ruc', 'direccion', 'fecha_emision', 'comprobante', 'cliente', 'productos', 'montos'));
         }
     }
+
+    /**
+     * Recuperar datos de un cliente a partir del número de documento
+     */
+    public function recuperarCliente($numero_documento = '') {
+       return Customer::where('numero_documento', $numero_documento)
+                      ->select('nombre_razon_social','numero_documento', 'direccion')
+                      ->first();
+    }
 }

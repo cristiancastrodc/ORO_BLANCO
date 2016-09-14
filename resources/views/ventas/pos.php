@@ -138,7 +138,7 @@
     </div>
   </div>
   <!-- Modal (Pop up when detail button clicked) -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalPago" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -167,18 +167,26 @@
                 <div class="form-group">
                   <label for="tbNumeroDocumento" class="col-sm-3 control-label">DNI o RUC:</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="tbNumeroDocumento" name="tbNumeroDocumento" ng-model="cliente.numero_documento" ng-change="validarDocumento()">
+                    <input type="text" class="form-control" id="tbNumeroDocumento" name="tbNumeroDocumento" ng-model="cliente.numero_documento" ng-change="validarDocumento()" ng-blur="recuperarCliente()">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="tbNombreRazonSocial" class="col-sm-3 control-label">Nombre o Razón Social:</label>
-                  <div class="col-sm-9">
+                  <div class="col-sm-9 input-field">
+                    <i class="material-icons prefix">
+                      <span ng-hide="procesandoCliente">account_circle</span>
+                      <span ng-show="procesandoCliente">autorenew</span>
+                    </i>
                     <input type="text" class="form-control" id="tbNombreRazonSocial" name="tbNombreRazonSocial" ng-model="cliente.nombre_razon_social" ng-disabled="sinDocumento">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="tbDireccion" class="col-sm-3 control-label">Direccion:</label>
-                  <div class="col-sm-9">
+                  <div class="col-sm-9 input-field">
+                    <i class="material-icons prefix">
+                      <span ng-hide="procesandoCliente">home</span>
+                      <span ng-show="procesandoCliente">autorenew</span>
+                    </i>
                     <input type="text" class="form-control" id="tbDireccion" name="tbDireccion" ng-model="cliente.direccion" ng-disabled="sinDocumento">
                   </div>
                 </div>
