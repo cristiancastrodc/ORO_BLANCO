@@ -146,12 +146,14 @@ class SalesController extends Controller
                     $cliente_aux->direccion = $cliente["direccion"];
                     $cliente_aux->save();
                 } else {
-                    $id_cliente =
-                    Customer::create([
-                    'nombre_razon_social' => $cliente["nombre_razon_social"],
-                    'numero_documento' => $cliente["numero_documento"],
-                    'direccion' => $cliente["direccion"]
-                    ])->id;
+                    if ($cliente["nombre_razon_social"] != "") {
+                      $id_cliente =
+                      Customer::create([
+                      'nombre_razon_social' => $cliente["nombre_razon_social"],
+                      'numero_documento' => $cliente["numero_documento"],
+                      'direccion' => $cliente["direccion"]
+                      ])->id;
+                    }
                 }
             }
             // Venta
@@ -270,9 +272,9 @@ class SalesController extends Controller
     {
         $id_ticket = Sale::where('numero_comprobante', '=', $request['tbTicket'])
                     ->where('esta_anulada', '=', false)
-                    ->first();      
+                    ->first();
 
-        if ($id_ticket) {            
+        if ($id_ticket) {
             $detalle = SaleDetail::where('id_venta', '=', $id_ticket->id)
                         ->get();
             $amounts = SaleAmounts::where('id_venta', '=', $id_ticket->id)
@@ -309,4 +311,14 @@ class SalesController extends Controller
             return Redirect::to('/dashboard');
         }
     }
+
+    /**
+     * Recuperar datos de un cliente a partir del número de documento
+     */
+    public function recuperarCliente($numero_documento = '') {
+       return Customer::where('numero_documento', $numero_documento)
+                      ->select('nombre_razon_social','numero_documento', 'direccion')
+                      ->first();
+    }
+
 }

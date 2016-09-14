@@ -34,3 +34,4 @@ Route::get('ventas/punto_de_venta/ticket/{id_venta}', 'SalesController@imprimirT
 Route::get('ventas/caja/cierre', 'SessionsController@cerraCaja');
 Route::post('ventas/cerrar', 'SessionsController@confimarCierre');
 Route::get('ventas/resumen_sesion/{id_sesion}', 'SessionsController@resumenCaja');
+Route::get('ventas/punto_de_venta/cliente/{numero_documento?}', 'SalesController@recuperarCliente');
