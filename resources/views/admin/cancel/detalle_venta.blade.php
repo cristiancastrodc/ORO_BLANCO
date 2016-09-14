@@ -27,13 +27,13 @@
         <div class="form-group">
           <label class="col-sm-2 control-label">Cajera:</label>
           <div class="col-sm-10">
-            <p class="form-control-static">{{ $id_ticket->id_usuario }}</p>
+            <p class="form-control-static">{{ $usunombre }}</p>
           </div>          
         </div>
         <div class="form-group">
           <label class="col-sm-2 control-label">Cliente:</label>
           <div class="col-sm-10">
-            <p class="form-control-static">{{ $id_ticket->id_cliente }}</p>
+            <p class="form-control-static">{{ $nombre }}</p>
           </div>          
         </div>
         <div class="form-group">

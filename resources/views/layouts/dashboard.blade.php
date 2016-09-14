@@ -56,7 +56,7 @@
               </li>
               <li>
                 <a href="{{ url('/admin/anulacion') }}" class="text-center">
-                  <i class="material-icons md-36">attach_money</i><br>
+                  <i class="material-icons md-36">remove_shopping_cart</i><br>
                   Anular Ticket
                 </a>
               </li>
