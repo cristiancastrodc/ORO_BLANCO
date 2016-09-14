@@ -5,39 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Punto de Venta | Oro Blanco Pastelería</title>
-  <link href="<?php echo asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') ?>" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link href="<?php echo asset('https://fonts.googleapis.com/icon?family=Material+Icons'); ?>" rel="stylesheet">
-  <link href="<?php echo asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'); ?>" rel="stylesheet">
+  <link href="<?php echo asset('css/bootstrap.min.css') ?>" rel="stylesheet">
   <link href="<?php echo asset('css/mdb.min.css'); ?>" rel="stylesheet">
-  <style>
-    .material-icons.md-36 { font-size: 36px; }
-    .buttons{padding: 20px;}
-    .btn {
-      white-space: normal;
-      text-transform: uppercase;
-    }
-    .ob-labels { font-size: 16px; }
-    .glyphicon-refresh-animate {
-        -animation: spin .7s infinite linear;
-        -webkit-animation: spin2 .7s infinite linear;
-    }
-
-    @-webkit-keyframes spin2 {
-        from { -webkit-transform: rotate(0deg);}
-        to { -webkit-transform: rotate(360deg);}
-    }
-
-    @keyframes spin {
-        from { transform: scale(1) rotate(0deg);}
-        to { transform: scale(1) rotate(360deg);}
-    }
-    .products {
-      min-height: 100px;
-    }
-    .products:hover {
-      cursor: pointer;
-    }
-  </style>
+  <link href="<?php echo asset('css/style.css'); ?>" rel="stylesheet">
 </head>
 <body data-ng-controller="POSController">
   <div class="container">
@@ -225,9 +195,9 @@
           </div>
       </div>
   </div>
-  <script src="<?php echo asset('https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js'); ?>" ></script>
-  <script src="<?php echo asset('https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'); ?>"></script>
-  <script src="<?php echo asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'); ?>" ></script>
+  <script src="<?php echo asset('js/angular.min.js'); ?>" ></script>
+  <script src="<?php echo asset('js/jquery.min.js'); ?>"></script>
+  <script src="<?php echo asset('js/bootstrap.min.js'); ?>" ></script>
   <script src="<?php echo asset('js/mdb.min.js'); ?>"></script>
   <script src="<?php echo asset('js/app.js'); ?>" ></script>
 </body>
