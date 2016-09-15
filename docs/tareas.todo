@@ -1,6 +1,6 @@
 Ventas:
   ✔ Cierre de Caja @done (16-09-13 07:42)
-  ☐ Anulación de Venta: Con autorización del administrador
+  ✔ Anulación de Venta @done (16-09-14 23:00)
   Punto de Venta:
     ✔ Recuperar Cliente con DNI o RUC @done (16-09-14 03:38)
     ✔ Buscador de Productos @done (16-09-11 05:58)
@@ -11,13 +11,16 @@ Ventas:
     ✔ Si no hay DNI, no permitir nombre ni dirección. @done (16-09-13 07:39)
     ✘ Verificar los valores que se envían al ticket @cancelled (16-09-13 07:41)
     ✔ No guardar cliente vacío @done (16-09-14 03:52)
+    ☐ Seleccionar la cantidad para cada artículo seleccionado.
   Movimientos de caja:
 Admin:
   ☐ Administración de Productos
   ✔ Configuración empresa: Recuperar datos @done (16-09-13 07:43)
   ☐ Generar Backups de la Base de Datos
+  Reportes:
+    ☐ Resumen de Ventas
 Usuario:
-  ☐ Modificar perfil
+  ☐ Modificar contraseña
 Programacion:
   ☐ Request
   ☐ 404
