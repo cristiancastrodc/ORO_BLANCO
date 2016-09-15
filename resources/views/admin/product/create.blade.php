@@ -6,7 +6,7 @@
 
 @section('content')
   <div class="col-sm-8">
-    <h2 class="font-main-color">Crear Productos</h2>
+    <h2 class="font-main-color">Crear Producto</h2>
     <form class="form-horizontal" method="POST" action="{{ url('/admin/productos') }}">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="form-group">
@@ -37,7 +37,7 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn main-color btn-ob">Guardar</button>
+          <button type="submit" class="btn main-color btn-ob waves-effect waves-light">Guardar</button>
         </div>
       </div>
     </form>

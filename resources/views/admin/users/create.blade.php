@@ -51,7 +51,7 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="submit" class="btn btn-primary main-color btn-ob waves-effect waves-light">Guardar</button>
         </div>
       </div>
     </form>

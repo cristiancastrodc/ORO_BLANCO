@@ -12,7 +12,7 @@
 <body data-ng-controller="POSController">
   <div class="container">
     <div class="row">
-      <nav class="navbar pink lighten-2">
+      <nav class="navbar accent-color">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header visible-xs">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -46,6 +46,12 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="<?php echo url('/perfil'); ?>" class="text-center">
+                <i class="material-icons md-36">person</i><br>
+                Perfil
+              </a>
+            </li>
             <li>
               <a href="<?php echo url('/logout'); ?>" class="text-center">
                 <i class="material-icons md-36">power_settings_new</i><br>

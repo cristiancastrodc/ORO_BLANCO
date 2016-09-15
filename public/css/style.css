@@ -31,6 +31,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .font-accent-color {
   color: #00635C !important;
 }
+a {
+  color: #00635C;
+}
+
 /** Material icons **/
 @font-face {
   font-family: 'Material Icons';

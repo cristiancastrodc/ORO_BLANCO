@@ -6,7 +6,7 @@
 
 @section('content')
   <div class="col-sm-8">
-    <h1>Cambiar Contraseña</h1>
+    <h2 class="font-main-color">Cambiar Contraseña</h2>
     <form class="form-horizontal" method="POST" action="{{ url('/perfil_config') }}">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="form-group">
@@ -29,7 +29,7 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="submit" class="btn main-color btn-ob waves-effect waves-light">Guardar</button>
         </div>
       </div>
     </form>

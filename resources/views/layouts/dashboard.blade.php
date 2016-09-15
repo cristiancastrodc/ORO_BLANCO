@@ -81,17 +81,15 @@
           </ul>          
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a href="{{ url('/logout') }}" class="text-center">
-                <i class="material-icons md-36">power_settings_new</i><br>
-                Cerrar Sesión
-              </a>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
               <a href="{{ url('/perfil') }}" class="text-center">
                 <i class="material-icons md-36">person</i><br>
                 Perfil
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('/logout') }}" class="text-center">
+                <i class="material-icons md-36">power_settings_new</i><br>
+                Cerrar Sesión
               </a>
             </li>
           </ul>
