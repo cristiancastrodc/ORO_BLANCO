@@ -4,7 +4,7 @@ var app = angular.module('puntoDeVenta', [])
 // Definir el controlador
 app.controller('POSController', function ($scope, $http, API_URL) {
   // Recuperación inicial de todos los productos
-  $http.get(API_URL + 'productos')
+  $http.get(API_URL + 'productos/filtrar')
   .success(function(response) {
     $scope.products = response;
   });

@@ -22,7 +22,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::orderBy('descripcion')->get();
+        $productos = Product::orderBy('descripcion')->get();
+        return view('admin.product.index', ['productos' => $productos]);
     }
 
     /**
@@ -62,7 +63,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $producto = Product::find($id);
+        return view('admin.product.edit', ['producto' => $producto]);
     }
 
     /**
@@ -85,7 +87,19 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $producto = Product::find($id);
+        if ($producto) {
+            $producto->codigo = $request['tbCodigo'];
+            $producto->descripcion = $request['tbDescripcion'];
+            $producto->descripcion_corta = $request['tbDescripcionCorta'];
+            $producto->precio_venta = $request['tbPrecio'];
+            $producto->save();
+            Session::flash('message', 'Producto actualizado correctamente.');
+            return Redirect::to('admin/productos');
+        } else {
+            Session::flash('message', 'Error.');
+            return Redirect::to('admin/productos');
+        };
     }
 
     /**

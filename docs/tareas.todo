@@ -14,7 +14,7 @@ Ventas:
     ☐ Seleccionar la cantidad para cada artículo seleccionado.
   Movimientos de caja:
 Admin:
-  ☐ Administración de Productos
+  ✔ Administración de Productos @done (16-09-15 06:24)
   ✔ Configuración empresa: Recuperar datos @done (16-09-13 07:43)
   ☐ Generar Backups de la Base de Datos
   Reportes:
@@ -26,3 +26,5 @@ Programacion:
   ☐ 404
   ☐ Estilos
   ✔ Descargar archivos externos y referenciar @done (16-09-14 05:29)
+  ☐ Redireccionar si el usuario ya está logueado
+  ☐ Validar que los módulos que usen Auth, primero verifiquen si hay sesión

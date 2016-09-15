@@ -30,7 +30,13 @@
               <li>
                 <a href="{{ url('/admin/productos/create') }}" class="text-center">
                   <i class="material-icons md-36">free_breakfast</i><br>
-                  Crear Productos
+                  Crear Producto
+                </a>
+              </li>
+              <li>
+                <a href="{{ url('/admin/productos/') }}" class="text-center">
+                  <i class="material-icons md-36">assignment</i><br>
+                  Administrar Productos
                 </a>
               </li>
               <li>
@@ -48,7 +54,7 @@
               <li>
                 <a href="{{ url('/admin/anulacion') }}" class="text-center">
                   <i class="material-icons md-36">remove_shopping_cart</i><br>
-                  Anular Ticket
+                  Anular Venta
                 </a>
               </li>
             @endif
