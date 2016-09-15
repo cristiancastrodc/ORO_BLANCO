@@ -65,7 +65,7 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="panel">
-          <div class="panel-heading cyan lighten-2">
+          <div class="panel-heading main-color font-white">
             <h3 class="panel-title">Venta</h3>
           </div>
           <div class="panel-body">
@@ -74,8 +74,8 @@
             </div>
             <ul class="list-group">
               <li class="list-group-item" ng-repeat = "item in order">
-                <button class="btn btn-danger btn-xs" ng-click="deleteItem($index)">
-                  <span class="glyphicon glyphicon-trash"></span>
+                <button class="btn btn-danger btn-xs btn-ob-cancel" ng-click="deleteItem($index)">
+                  <i class="material-icons">delete</i>
                 </button>
                 {{ item.item.descripcion }}
                 <div class="label label-success ob-labels pull-right">S/ {{ item.item.precio_venta }}</div>
@@ -87,29 +87,27 @@
           </div>
           <div class="panel-footer text-right">
             <span class="btn btn-default" ng-click="clearOrder()" ng-disabled="!order.length">Limpiar</span>
-            <button class="btn btn-danger" ng-click="checkout()" ng-disabled="!order.length">Pago</button>
+            <button class="btn main-color btn-ob" ng-click="checkout()" ng-disabled="!order.length">Pago</button>
           </div>
         </div>
       </div>
       <div class="col-sm-6">
         <div class="panel">
-          <div class="panel-heading cyan lighten-2">
+          <div class="panel-heading main-color font-white">
             <h3 class="panel-title">Productos</h3>
           </div>
           <div class="panel-body">
             <div class="row">
               <div class="col-sm-12">
-                <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-addon"><div class="glyphicon glyphicon-search"></div></div>
-                    <input type="text" class="form-control" id="tbFiltro" placeholder="Buscar" ng-model="filtro" ng-change="filtrarProductos()" ng-model-options="{debounce:1000}">
-                  </div>
+                <div class="form-group input-field">
+                  <i class="material-icons prefix">search</i>
+                  <input type="text" class="form-control" id="tbFiltro" placeholder="Buscar" ng-model="filtro" ng-change="filtrarProductos()" ng-model-options="{debounce:1000}">
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-4" ng-repeat="product in products">
-                <div class="card-panel default-color text-center text-uppercase products" ng-click="add(product)">
+                <div class="card-panel accent-color text-center text-uppercase products" ng-click="add(product)">
                   <span class="white-text">{{ product.descripcion }}</span>
                 </div>
               </div>
@@ -197,7 +195,7 @@
             </div>
             <div class="modal-footer">
               <a class="btn btn-link" data-dismiss="modal">Cancelar</a>
-              <button class="btn btn-danger" ng-click="procesar()" ng-disabled="formNoValido || procesando">
+              <button class="btn main-color btn-ob" ng-click="procesar()" ng-disabled="formNoValido || procesando">
                 <span ng-hide="procesando">Finalizar</span>
                 <span ng-show="procesando">
                   <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Procesando...

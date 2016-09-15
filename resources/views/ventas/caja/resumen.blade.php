@@ -6,7 +6,7 @@
 
 @section('content')
   <div class="col-sm-12">
-    <h1>Resumen de la Sesión</h1>
+    <h2 class="font-main-color">Resumen de la Sesión</h2>
     <div class="row">
       <div class="form-horizontal">
         <div class="form-group">

@@ -6,7 +6,7 @@
 
 @section('content')
   <div class="col-sm-8">
-    <h1>Resumen de Ventas</h1>
+    <h2 class="font-main-color">Resumen de Ventas</h2>
     <table class="table">
       <tr>
         <td>Ticket</td>

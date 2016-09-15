@@ -6,7 +6,7 @@
 
 @section('content')
   <div class="col-sm-8">
-    <h1>Apertura de Caja</h1>
+    <h2 class="font-main-color">Apertura de Caja</h2>
     <form class="form-horizontal" method="POST" action="{{ url('/ventas/sesion') }}">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="form-group">
@@ -20,7 +20,7 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-4 col-sm-10">
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="submit" class="btn btn-ob main-color">Guardar</button>
         </div>
       </div>
     </form>

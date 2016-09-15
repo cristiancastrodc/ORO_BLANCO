@@ -6,7 +6,7 @@
 
 @section('content')
   <div class="col-sm-12">
-    <h1>Detalle de la Venta</h1>
+    <h2 class="font-main-color">Detalle de la Venta</h2>
     <form class="form-horizontal">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="row">

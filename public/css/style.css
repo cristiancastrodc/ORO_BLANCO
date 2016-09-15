@@ -34,6 +34,13 @@ textarea.materialize-textarea:focus:not([readonly]) {
 a {
   color: #00635C;
 }
+.font-white {
+  color: #FFF;
+}
+.btn-ob-cancel {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
 /** Material icons **/
 @font-face {
@@ -72,7 +79,7 @@ a {
   font-feature-settings: 'liga';
 }
 /*** Punto de Venta ***/
-.ob-labels { font-size: 16px; }
+.ob-labels { font-size: 18px; }
 .glyphicon-refresh-animate {
     -animation: spin .7s infinite linear;
     -webkit-animation: spin2 .7s infinite linear;
