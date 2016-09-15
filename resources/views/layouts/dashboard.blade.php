@@ -65,6 +65,12 @@
                   Cierre de Caja
                 </a>
               </li>
+              <li>
+                <a href="{{ url('/ventas/resumen_ventas') }}" class="text-center">
+                  <i class="material-icons md-36">description</i><br>
+                  Resumen de Ventas
+                </a>
+              </li>
             @endif
           </ul>
           <ul class="nav navbar-nav navbar-right">

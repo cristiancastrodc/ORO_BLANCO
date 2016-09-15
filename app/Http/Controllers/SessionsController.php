@@ -130,7 +130,7 @@ class SessionsController extends Controller
     {
         $sesion = SaleSession::find($id_sesion);
         $usuario = User::find($sesion->id_usuario);
-        $nombre = $usuario->nombre . ' ' . $usuario->apellidos;
+        $nombre = $usuario->nombres . ' ' . $usuario->apellidos;
         return view('ventas.caja.resumen', compact('sesion', 'nombre'));
     }
 }
