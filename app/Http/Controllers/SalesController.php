@@ -13,6 +13,7 @@ use App\SaleAmounts;
 use App\SaleDetail;
 use App\SaleSession;
 use App\VoucherConfig;
+use App\User;
 use Session;
 use Auth;
 use DB;
@@ -247,7 +248,7 @@ class SalesController extends Controller
         $cliente_razon_social = '';
         if ($cliente) {
             $cliente_numero_documento = $cliente->numero_documento;
-            $cliente_razon_social = $cliente->razon_social;
+            $cliente_razon_social = $cliente->nombre_razon_social;
         }
         $productos = SaleDetail::where('id_venta', '=', $id_venta)->get();
         //$montos = SaleAmounts::find($id_venta);
@@ -279,9 +280,25 @@ class SalesController extends Controller
                         ->get();
             $amounts = SaleAmounts::where('id_venta', '=', $id_ticket->id)
                         ->first();
-            return view('admin.cancel.detalle_venta', compact('id_ticket', 'detalle', 'amounts'));
+            
+            $usuario = User::where('id', '=', $id_ticket->id_usuario)
+                        ->first();
+
+            $cliente = Customer::where('id', '=', $id_ticket->id_cliente)
+                        ->first();
+
+            $usunombre = $usuario->nombres . ' ' . $usuario->apellidos;
+
+            if ($cliente) {
+                $nombre = $cliente->nombre_razon_social;                
+                return view('admin.cancel.detalle_venta', compact('id_ticket', 'detalle', 'amounts', 'usunombre', 'nombre'));    
+            }else{
+                $nombre = " ";
+                return view('admin.cancel.detalle_venta', compact('id_ticket', 'detalle', 'amounts', 'usunombre', 'nombre', 'documento'));
+            }                      
+            
         } else {
-            Session::flash('message', 'No se encontro ninguna venta con ese numero de ticket o el ticket ya fué anulado.');
+            Session::flash('message', 'No se encontro ninguna venta con ese numero de ticket o el ticket ya fue anulado.');
             return Redirect::to('/dashboard');
         }
     }
@@ -300,7 +317,8 @@ class SalesController extends Controller
                 $id_ticket->esta_anulada = true;
                 $id_ticket->save();
 
-                $egreso->egresos = $monto;
+                $egreso->egresos = $egreso->egresos + $monto;
+                $egreso->monto_actual = $egreso->monto_actual - $monto;
                 $egreso->save();
 
                 Session::flash('message', 'Venta anulada correctamente.');
