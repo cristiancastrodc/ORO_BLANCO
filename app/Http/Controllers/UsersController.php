@@ -133,4 +133,39 @@ class UsersController extends Controller
     public function dashboard() {
         return view('layouts.dashboard');
     }
+
+    /**
+     * Cambiar Contraseña
+     */
+    public function mostrarPerfil(){
+        $configuracion = User::where('id', '=', Auth::user()->id)
+                        ->first();
+        $nombre = '';
+        $apellidos ='';
+        if ($configuracion) {            
+            $nombre = $configuracion->nombres;
+            $apellidos = $configuracion->apellidos;
+        }
+        return view('layouts.perfil', compact('nombre', 'apellidos'));
+    }
+
+    public function guardarPass(Request $request){
+        $user = User::find(Auth::user()->id);
+        $pass_new = $request['tbPassword'];
+        $pass_actual = $request['tbContrasenia'];
+        $password = $user->password;
+
+        if(\Hash::check($pass_actual , $password)){
+            $user->password = $pass_new;
+            $user->save();
+
+            Session::flash('message', 'Contraseña cambiada correctamente');
+            return Redirect::to('/dashboard');
+        }else{
+            Session::flash('message', 'Contraseña Actual incorrecta');
+            return Redirect::to('/dashboard');
+        }
+    }
+
+
 }

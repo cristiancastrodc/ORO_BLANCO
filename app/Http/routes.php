@@ -15,6 +15,8 @@ Route::get('/', function () { return view('login'); });
 Route::post('login', 'UsersController@login');
 Route::get('logout', 'UsersController@logout');
 Route::get('dashboard', 'UsersController@dashboard');
+Route::get('perfil', 'UsersController@mostrarPerfil');
+Route::post('perfil_config', 'UsersController@guardarPass');
 # Rutas para el usuario administrador
 Route::resource('admin/usuarios','UsersController');
 Route::resource('admin/productos','ProductController');
