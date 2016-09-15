@@ -38,6 +38,12 @@
                 Cierre de Caja
               </a>
             </li>
+            <li>
+              <a href="<?php echo url('/ventas/resumen_ventas'); ?>" class="text-center">
+                <i class="material-icons md-36">description</i><br>
+                Resumen de Ventas
+              </a>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>

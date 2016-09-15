@@ -6,7 +6,7 @@
 
 @section('content')
   <div class="col-sm-8">
-    <h1>Crear Usuario</h1>
+    <h2 class="font-main-color">Crear Usuario</h2>
     <form class="form-horizontal" method="POST" action="{{ url('/admin/usuarios') }}">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="form-group">

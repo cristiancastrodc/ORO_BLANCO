@@ -1,5 +1,36 @@
 .material-icons.md-36 { font-size: 36px; }
-
+.btn-ob,
+.btn-ob.focus,
+.btn-ob:focus,
+.btn-ob:hover {
+  color: #FFF;
+}
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search-md]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #00635C;
+  box-shadow: 0 1px 0 0 #00635C;
+}
+.main-color {
+  background: #00635C !important;
+}
+.accent-color {
+  background: rgb(214, 172, 139) !important
+}
+.font-main-color {
+  color: #B98E46 !important;
+}
+.font-accent-color {
+  color: #00635C !important;
+}
 /** Material icons **/
 @font-face {
   font-family: 'Material Icons';
