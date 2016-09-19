@@ -17,6 +17,7 @@ app.controller('POSController', function ($scope, $http, API_URL) {
     $scope.itemsCnt = $scope.order.length;
     var productItem = {
       id : $scope.itemsCnt,
+      quantity : 1,
       item : item
     };
     $scope.order.push(productItem);
@@ -24,9 +25,14 @@ app.controller('POSController', function ($scope, $http, API_URL) {
   // Función para calcular el total
   $scope.getSum = function() {
     var i = 0;
+    var quantity = 0;
+    var price = 0;
     var sum = 0;
     for(; i < $scope.order.length; i++) {
-      sum += parseFloat($scope.order[i].item.precio_venta, 10);
+      quantity = parseFloat($scope.order[i].quantity, 10);
+      price = parseFloat($scope.order[i].item.precio_venta, 10);
+      if (isNaN(quantity)) { quantity = 0; };
+      sum += (quantity * price);
     }
     return sum.toFixed(2);
   };

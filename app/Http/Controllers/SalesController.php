@@ -188,14 +188,15 @@ class SalesController extends Controller
             foreach ($detalle_venta as $producto) {
                 $id = $producto["item"]["id"];
                 $descripcion = $producto["item"]["descripcion_corta"];
-                $precio = $producto["item"]["precio_venta"];
+                $cantidad = floatval($producto["quantity"]);
+                $precio = floatval($producto["item"]["precio_venta"]);
                 SaleDetail::create([
                     'id_venta' => $id_venta,
                     'id_producto' => $id,
                     'descripcion_corta' => $descripcion,
-                    'cantidad' => 1,
+                    'cantidad' => $cantidad,
                     'precio_unitario' => $precio,
-                    'precio_total' => $precio
+                    'precio_total' => $cantidad * $precio
                     ]);
             }
             // Otros Montos

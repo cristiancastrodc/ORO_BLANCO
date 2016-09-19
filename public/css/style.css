@@ -98,3 +98,7 @@ a {
 .products:hover {
   cursor: pointer;
 }
+.table-input {
+  margin-bottom: 0 !important;
+  height: 25px !important;
+}

@@ -72,15 +72,24 @@
             <div class="text-warning" ng-hide="order.length">
               Seleccione productos...
             </div>
-            <ul class="list-group">
-              <li class="list-group-item" ng-repeat = "item in order">
-                <button class="btn btn-danger btn-xs btn-ob-cancel" ng-click="deleteItem($index)">
+            <table class="table">
+              <tr>
+                <td>Borrar</td>
+                <td>Producto</td>
+                <td>Cantidad</td>
+                <td>Precio</td>
+              </tr>
+              <tr ng-repeat="item in order">
+                <td><button class="btn btn-danger btn-xs btn-ob-cancel" ng-click="deleteItem($index)">
                   <i class="material-icons">delete</i>
-                </button>
-                {{ item.item.descripcion }}
-                <div class="label label-success ob-labels pull-right">S/ {{ item.item.precio_venta }}</div>
-              </li>
-            </ul>
+                </button></td>
+                <td>{{ item.item.descripcion }}</td>
+                <td>
+                  <input type="text" value="{{ item.quantity }}" ng-model="item.quantity" class="text-right table-input">
+                </td>
+                <td class="text-right"><div class="label label-success ob-labels">S/ {{ item.item.precio_venta }}</div></td>
+              </tr>
+            </table>
           </div>
           <div class="panel-footer text-right" ng-show="order.length">
             <span class="label label-danger ob-labels">Total: S/ {{ getSum() }}</span>
