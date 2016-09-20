@@ -28,3 +28,4 @@ Programacion:
   ✔ Descargar archivos externos y referenciar @done (16-09-14 05:29)
   ☐ Redireccionar si el usuario ya está logueado
   ☐ Validar que los módulos que usen Auth, primero verifiquen si hay sesión
+  ☐ Probar con fondo de body gris y fondo blanco en contenido
