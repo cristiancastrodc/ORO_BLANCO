@@ -25,6 +25,7 @@ Route::get('admin/anulacion', 'SalesController@anulacion');
 Route::get('admin/mostrar_venta', 'SalesController@mostrarVenta');
 Route::post('admin/anular', 'SalesController@anularVenta');
 Route::post('admin/producto/actualizar/{id_producto}', 'ProductController@update');
+Route::resource('admin/categorias','CategoryController');
 # Rutas para el usuario de ventas
 Route::get('ventas/verificar_sesion', 'SalesController@verificarSesion');
 Route::get('ventas/punto_de_venta', 'SalesController@index');

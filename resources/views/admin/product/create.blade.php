@@ -36,6 +36,17 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="selCategoria" class="col-sm-2 control-label">Categoria:</label>
+        <div class="col-sm-10 input-field">
+          <select class="form-control" id="selCategoria" name="selCategoria">
+            <option></option>
+            @foreach($categoria as $categoria)
+              <option value="{{ $categoria->id }}">{{$categoria->nombre}}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" class="btn main-color btn-ob waves-effect waves-light">Guardar</button>
         </div>

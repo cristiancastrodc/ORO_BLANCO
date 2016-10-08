@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Category;
 use Redirect;
 use Session;
 
@@ -33,7 +34,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        $categoria = Category::all();
+        return view('admin.product.create', compact('categoria'));
     }
 
     /**
@@ -49,8 +51,8 @@ class ProductController extends Controller
             'descripcion' => $request['tbDescripcion'],
             'descripcion_corta' => $request['tbDescripcionCorta'],
             'precio_venta' => $request['tbPrecio'],
+            'id_categoria' => $request['selCategoria'],
             ]);
-
         Session::flash('message', 'Producto creado correctamente.');
         return Redirect::to('/admin/productos/create');
     }
@@ -64,7 +66,8 @@ class ProductController extends Controller
     public function show($id)
     {
         $producto = Product::find($id);
-        return view('admin.product.edit', ['producto' => $producto]);
+        $categorias = Category::all();
+        return view('admin.product.edit', ['producto' => $producto, 'categorias' => $categorias]);
     }
 
     /**
@@ -93,6 +96,7 @@ class ProductController extends Controller
             $producto->descripcion = $request['tbDescripcion'];
             $producto->descripcion_corta = $request['tbDescripcionCorta'];
             $producto->precio_venta = $request['tbPrecio'];
+            $producto->id_categoria = $request['selCategoria'];
             $producto->save();
             Session::flash('message', 'Producto actualizado correctamente.');
             return Redirect::to('admin/productos');

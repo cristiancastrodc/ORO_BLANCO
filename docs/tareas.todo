@@ -11,14 +11,18 @@ Ventas:
     ✔ Si no hay DNI, no permitir nombre ni dirección. @done (16-09-13 07:39)
     ✘ Verificar los valores que se envían al ticket @cancelled (16-09-13 07:41)
     ✔ No guardar cliente vacío @done (16-09-14 03:52)
-    ☐ Seleccionar la cantidad para cada artículo seleccionado.
+    ✔ Seleccionar la cantidad para cada artículo seleccionado. @done (16-10-04 05:29)
+    ☐ Filtrar productos por categoría.
+    ☐ Quitar delay en la búsqueda.
   Movimientos de caja:
+  Reportes:
+    ✔ Resumen de Ventas @done (16-09-15 05:47)
 Admin:
   ✔ Administración de Productos @done (16-09-15 06:24)
   ✔ Configuración empresa: Recuperar datos @done (16-09-13 07:43)
   ☐ Generar Backups de la Base de Datos
   Reportes:
-    ✔ Resumen de Ventas @done (16-09-15 05:47)
+   ☐ Todos los reportes.
 Usuario:
   ☐ Modificar contraseña
 Programacion:

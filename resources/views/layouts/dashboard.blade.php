@@ -40,21 +40,27 @@
                 </a>
               </li>
               <li>
+                <a href="{{ url('/admin/categorias/create') }}" class="text-center">
+                  <i class="material-icons md-36">assignment</i><br>
+                  Crear Categoría
+                </a>
+              </li>
+              <li>
                 <a href="{{ url('/admin/usuarios/create') }}" class="text-center">
                   <i class="material-icons md-36">person_add</i><br>
                   Crear Usuarios
                 </a>
               </li>
               <li>
-                <a href="{{ url('/admin/business_config/create') }}" class="text-center">
-                  <i class="material-icons md-36">business</i><br>
-                  Configuracion Empresa
-                </a>
-              </li>
-              <li>
                 <a href="{{ url('/admin/anulacion') }}" class="text-center">
                   <i class="material-icons md-36">remove_shopping_cart</i><br>
                   Anular Venta
+                </a>
+              </li>
+              <li>
+                <a href="{{ url('/admin/business_config/create') }}" class="text-center">
+                  <i class="material-icons md-36">business</i><br>
+                  Configuracion Empresa
                 </a>
               </li>
             @endif
@@ -78,7 +84,7 @@
                 </a>
               </li>
             @endif
-          </ul>          
+          </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="{{ url('/perfil') }}" class="text-center">
