@@ -111,6 +111,7 @@ app.controller('POSController', function ($scope, $http, API_URL) {
       };
     })
   };
+  /*
   // Iniciar atributo para filtrar los productos
   $scope.filtro = '';
   // Función que filtra los productos
@@ -120,6 +121,7 @@ app.controller('POSController', function ($scope, $http, API_URL) {
       $scope.products = response;
     });
   };
+  */
   // Iniciar el atributo para controlar el nombre y direccion
   $scope.sinDocumento = true;
   // Función para activar/desactivar el nombre y dirección
@@ -149,5 +151,16 @@ app.controller('POSController', function ($scope, $http, API_URL) {
     .finally(function () {
       $scope.procesandoCliente = false;
     });
+  };
+  // Recuperación inicial de todas las categorías
+  $http.get(API_URL + 'categorias')
+  .success(function(response) {
+    $scope.categorias = response;
+  });
+  // Asignar la categoría
+  $scope.categoria = '';
+  $scope.asignarCategoria = function (id = '') {
+    $scope.categoria = id;
+    console.log($scope.categoria);
   };
 });

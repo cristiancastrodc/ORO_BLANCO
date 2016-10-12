@@ -91,4 +91,14 @@ class CategoryController extends Controller
     {
         //
     }
+
+    /**
+     * Returns a listing of the categories for using of the Point of Sale.
+     *
+     * @return object
+     */
+    public function categoriasParaVentas()
+    {
+        return Category::orderBy('nombre')->get();
+    }
 }

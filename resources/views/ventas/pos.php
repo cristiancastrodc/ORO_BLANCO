@@ -83,7 +83,7 @@
                 <td><button class="btn btn-danger btn-xs btn-ob-cancel" ng-click="deleteItem($index)">
                   <i class="material-icons">delete</i>
                 </button></td>
-                <td>{{ item.item.descripcion }}</td>
+                <td class="text-uppercase">{{ item.item.descripcion }}</td>
                 <td>
                   <input type="text" value="{{ item.quantity }}" ng-model="item.quantity" class="text-right table-input">
                 </td>
@@ -108,14 +108,24 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-sm-12">
+                <ul class="list-inline">
+                  <li ng-repeat="cat in categorias" class="pos-category">
+                    <a ng-click="asignarCategoria(cat.id)"><span class="label label-ob text-uppercase">{{ cat.nombre }}</span></a>
+                  </li>
+                </ul>
+                <a class="btn-flat waves-effect" ng-click="asignarCategoria()">Todas las categorías</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
                 <div class="form-group input-field">
                   <i class="material-icons prefix">search</i>
-                  <input type="text" class="form-control" id="tbFiltro" placeholder="Buscar" ng-model="filtro" ng-change="filtrarProductos()" ng-model-options="{debounce:1000}">
+                  <input type="text" class="form-control" id="tbFiltro" placeholder="Buscar" ng-model="search">
                 </div>
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-4" ng-repeat="product in products">
+              <div class="col-sm-4" ng-repeat="product in products | filter : { descripcion : search, id_categoria : categoria}">
                 <div class="card-panel accent-color text-center text-uppercase products" ng-click="add(product)">
                   <span class="white-text">{{ product.descripcion }}</span>
                 </div>

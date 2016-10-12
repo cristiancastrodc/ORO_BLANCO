@@ -102,3 +102,9 @@ a {
   margin-bottom: 0 !important;
   height: 25px !important;
 }
+.label-ob {
+  background: rgba(0,99,92,0.65);
+}
+.pos-category {
+  font-size: 18px;
+}
