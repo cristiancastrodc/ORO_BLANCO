@@ -8,6 +8,7 @@
   <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+  @yield('css')
 </head>
 <body>
   <div class="container">
@@ -55,6 +56,12 @@
                 <a href="{{ url('/admin/anulacion') }}" class="text-center">
                   <i class="material-icons md-36">remove_shopping_cart</i><br>
                   Anular Venta
+                </a>
+              </li>
+              <li>
+                <a href="{{ url('/admin/reportes/listado') }}" class="text-center">
+                  <i class="material-icons md-36">assessment</i><br>
+                  Reportes
                 </a>
               </li>
               <li>

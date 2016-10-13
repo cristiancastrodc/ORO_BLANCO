@@ -26,6 +26,8 @@ Route::get('admin/mostrar_venta', 'SalesController@mostrarVenta');
 Route::post('admin/anular', 'SalesController@anularVenta');
 Route::post('admin/producto/actualizar/{id_producto}', 'ProductController@update');
 Route::resource('admin/categorias','CategoryController');
+Route::get('admin/reportes/listado','ReportsAdminController@listadoReportes');
+Route::get('admin/reportes/ventas/filtrar','ReportsAdminController@filtrarReporteVentas');
 # Rutas para el usuario de ventas
 Route::get('ventas/verificar_sesion', 'SalesController@verificarSesion');
 Route::get('ventas/punto_de_venta', 'SalesController@index');
