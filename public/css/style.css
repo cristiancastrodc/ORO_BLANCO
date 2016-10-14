@@ -108,3 +108,23 @@ a {
 .pos-category {
   font-size: 18px;
 }
+.dtp > .dtp-content > .dtp-date-view > header.dtp-header,
+.dtp div.dtp-date {
+  background: #00635C !important;
+}
+.dtp table.dtp-picker-days tr > td {
+  font-weight: 400 !important;
+}
+.dtp table.dtp-picker-days tr > td > a.selected {
+  background: #00635C !important;
+}
+.dtp table.dtp-picker-days tr > th {
+  text-transform: uppercase;
+}
+.dtp .p10 > a {
+  color: #FFF !important;
+}
+.dtp-btn-cancel,
+.dtp-btn-ok {
+  box-shadow: none;
+}
