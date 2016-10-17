@@ -1,6 +1,6 @@
 // Definir la aplicación y la url para los procesos
 var app = angular.module('puntoDeVenta', [])
-                 .constant('API_URL', 'http://localhost/ventas/');
+                 .constant('API_URL', '/ventas/');
 // Definir el controlador
 app.controller('POSController', function ($scope, $http, API_URL) {
   // Recuperación inicial de todos los productos
@@ -162,5 +162,16 @@ app.controller('POSController', function ($scope, $http, API_URL) {
   $scope.asignarCategoria = function (id = '') {
     $scope.categoria = id;
     console.log($scope.categoria);
+  };
+  // Función para realizar el filtrado según una categoría
+  $scope.filtroCategoria = function(id_categoria, categoria) {
+    if(categoria === '' || categoria === null) return true;
+    return id_categoria === categoria;
+  };
+  // Función para realizar el filtrado según descripción
+  $scope.filtroDescripcion = function (descripcion, texto) {
+    if (texto === '' || texto === null) return true;
+    var regex = new RegExp("\\b" + texto, "i");
+    return regex.test(descripcion);
   };
 });

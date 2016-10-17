@@ -125,7 +125,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-4" ng-repeat="product in products | filter : { descripcion : search, id_categoria : categoria}">
+              <div class="col-sm-4" ng-repeat="product in products | filter : { descripcion : search} : filtroDescripcion | filter : {id_categoria : categoria} : filtroCategoria">
                 <div class="card-panel accent-color text-center text-uppercase products" ng-click="add(product)">
                   <span class="white-text">{{ product.descripcion }}</span>
                 </div>
