@@ -1,4 +1,4 @@
-ingresos dentro de un rango de fechas - detallado
+ventas
 
 - Selecionar fecha
 	----------------------------------------------------------------------------
@@ -42,7 +42,7 @@ Estadistico de ingresos por reporte de tiempo
 	 	Fecha Inicial : _____________
 	 	  Fecha Final : _____________
 
-	Intervalo de tiempo : _____________
+	Intervalo de tiempo : _____________(cada hora, cada  2)
 	 ------------------
 	 |	    VER		  |
 	 ------------------

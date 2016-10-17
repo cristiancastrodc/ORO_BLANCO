@@ -41,8 +41,18 @@ class ReportsAdminController extends Controller
             $nro_ventas++;
             $monto_total += $venta->total;
         }
+        $monto_total = number_format($monto_total, 2);
+
+        $nom_fecha = '';
+        if ($fecha_inicial == $fecha_final) {
+            $nom_fecha = 'Fecha';
+            $fechas = $fecha_inicial;
+        }else {
+            $nom_fecha = 'Fechas';
+            $fechas = 'Del ' . $fecha_inicial  . ' al ' . $fecha_final;
+        }
 
         return view('admin.reports.sells.results',
-            ['ventas' => $ventas, 'nro_ventas' => $nro_ventas, 'monto_total' => $monto_total, 'fecha_inicial' => $fecha_inicial, 'fecha_final' => $fecha_final, 'fecha' => $fecha]);
+            ['ventas' => $ventas, 'nro_ventas' => $nro_ventas, 'monto_total' => $monto_total, 'fechas' => $fechas, 'fecha' => $fecha, 'nom_fecha' => $nom_fecha]);
     }
 }
