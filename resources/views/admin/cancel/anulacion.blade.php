@@ -18,8 +18,8 @@
         <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" class="btn main-color btn-ob waves-effect waves-light">Buscar Venta</button>
         </div>
-      </div> 
-    </form>     
+      </div>
+    </form>
   </div>
 @endsection
 

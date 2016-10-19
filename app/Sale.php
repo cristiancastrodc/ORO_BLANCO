@@ -33,7 +33,7 @@ class Sale extends Model
                    ->whereDate('fecha_hora_emision', '>=', $fecha_inicial)
                    ->whereDate('fecha_hora_emision', '<=', $fecha_final)
                    ->groupBy('sale_details.id_venta')
-                   ->select('fecha_hora_emision', DB::raw("CONCAT(users.nombres, ' ', users.apellidos) as usuario"), DB::raw("CONCAT(sales.tipo_comprobante, ' ', sales.serie_comprobante, '-', sales.numero_comprobante) as comprobante"), 'nombre_razon_social', DB::raw('SUM(sale_details.cantidad) as cantidad'), 'sub_total', 'igv', 'total', 'efectivo')
+                   ->select('sales.id', 'fecha_hora_emision', DB::raw("CONCAT(users.nombres, ' ', users.apellidos) as usuario"), DB::raw("CONCAT(sales.tipo_comprobante, ' ', sales.serie_comprobante, '-', sales.numero_comprobante) as comprobante"), 'nombre_razon_social', DB::raw('SUM(sale_details.cantidad) as cantidad'), 'sub_total', 'igv', 'total', 'efectivo')
                    ->get();
     }
 }

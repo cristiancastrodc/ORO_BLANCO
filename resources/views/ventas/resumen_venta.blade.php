@@ -22,7 +22,7 @@
         </td>
       </tr>
       @endforeach
-    </table>                 
+    </table>
   </div>
 @endsection
 
