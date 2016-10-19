@@ -29,14 +29,13 @@ Route::resource('admin/categorias','CategoryController');
 Route::get('admin/reportes/listado','ReportsAdminController@listadoReportes');
 Route::get('admin/reportes/ventas/filtrar','ReportsAdminController@filtrarReporteVentas');
 Route::post('admin/reportes/ventas/generar','ReportsAdminController@generarReporteVentas');
+Route::get('admin/reportes/ventas/detalle/{id_venta}', 'ReportsAdminController@detalleVentas');
 Route::get('admin/reportes/estadistico_ventas/filtrar','ReportsAdminController@filtrarEstadisticoVentas');
 Route::post('admin/reportes/estadistico_ventas/generar','ReportsAdminController@generarEstadisticoVentas');
 Route::get('admin/reportes/estadistico_productos/filtrar','ReportsAdminController@filtrarEstadisticoProductos');
 Route::post('admin/reportes/estadistico_productos/generar','ReportsAdminController@generarEstadisticoProductos');
 Route::get('admin/reportes/resumen_ventas/filtrar','ReportsAdminController@filtrarResumenVentas');
 Route::post('admin/reportes/resumen_ventas/generar','ReportsAdminController@generarResumenVentas');
-
-
 # Rutas para el usuario de ventas
 Route::get('ventas/verificar_sesion', 'SalesController@verificarSesion');
 Route::get('ventas/punto_de_venta', 'SalesController@index');

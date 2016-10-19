@@ -281,7 +281,7 @@ class SalesController extends Controller
                         ->get();
             $amounts = SaleAmounts::where('id_venta', '=', $id_ticket->id)
                         ->first();
-            
+
             $usuario = User::where('id', '=', $id_ticket->id_usuario)
                         ->first();
 
@@ -291,13 +291,13 @@ class SalesController extends Controller
             $usunombre = $usuario->nombres . ' ' . $usuario->apellidos;
 
             if ($cliente) {
-                $nombre = $cliente->nombre_razon_social;                
-                return view('admin.cancel.detalle_venta', compact('id_ticket', 'detalle', 'amounts', 'usunombre', 'nombre'));    
+                $nombre = $cliente->nombre_razon_social;
+                return view('admin.cancel.detalle_venta', compact('id_ticket', 'detalle', 'amounts', 'usunombre', 'nombre'));
             }else{
                 $nombre = " ";
                 return view('admin.cancel.detalle_venta', compact('id_ticket', 'detalle', 'amounts', 'usunombre', 'nombre'));
-            }                      
-            
+            }
+
         } else {
             Session::flash('message', 'No se encontro ninguna venta con ese numero de ticket o el ticket ya fue anulado.');
             return Redirect::to('/dashboard');
@@ -359,7 +359,7 @@ class SalesController extends Controller
             Session::flash('message', 'No se encontro ninguna caja con sesión aperturada.');
             return Redirect::to('/dashboard');
         }
-        
+
     }
 
     public function detalleVentas($id_venta){
@@ -373,7 +373,7 @@ class SalesController extends Controller
                         ->get();
             $amounts = SaleAmounts::where('id_venta', '=', $id_venta)
                         ->first();
-            
+
             $usuario = User::where('id', '=', $id_ticket->id_usuario)
                         ->first();
 
@@ -387,15 +387,15 @@ class SalesController extends Controller
             }else{
                 $anulado = 'No';
             }
-            
+
 
             if ($cliente) {
-                $nombre = $cliente->nombre_razon_social;                
-                return view('ventas.det_venta', compact('id_ticket', 'detalle', 'amounts', 'usunombre', 'nombre', 'anulado'));    
+                $nombre = $cliente->nombre_razon_social;
+                return view('ventas.det_venta', compact('id_ticket', 'detalle', 'amounts', 'usunombre', 'nombre', 'anulado'));
             }else{
                 $nombre = " ";
                 return view('ventas.det_venta', compact('id_ticket', 'detalle', 'amounts', 'usunombre', 'nombre', 'anulado'));
-            }            
+            }
         } else {
             Session::flash('message', 'No se encontro ninguna venta con ese numero de ticket');
             return Redirect::to('/dashboard');

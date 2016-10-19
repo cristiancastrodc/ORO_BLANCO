@@ -10,6 +10,7 @@ use App\Category;
 use App\Product;
 use App\SaleDetail;
 use App\SaleAmounts;
+use App\SaleDetail;
 
 class ReportsAdminController extends Controller
 {
@@ -58,6 +59,15 @@ class ReportsAdminController extends Controller
 
         return view('admin.reports.sells.results',
             ['ventas' => $ventas, 'nro_ventas' => $nro_ventas, 'monto_total' => $monto_total, 'fechas' => $fechas, 'fecha' => $fecha, 'nom_fecha' => $nom_fecha]);
+    }
+    /**
+     * Recuperar el detalle de una venta para el reporte.
+     */
+    public function detalleVentas($id_venta)
+    {
+        return SaleDetail::where('id_venta', $id_venta)
+                         ->select('descripcion_corta', 'cantidad', 'precio_unitario', 'precio_total')
+                         ->get();
     }
     /**
      * Filtros para el Estadistico de Ventas.
