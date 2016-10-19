@@ -53,7 +53,7 @@ Estadistico de ingresos por reporte de tiempo
 	
 	-----------------------------------------------------------------------------
 	
-	Rango de tiempo		  Cant. Transacciones  		Promedio Transacciones    TOTAL
+	Rango de tiempo		  Cant. Transacciones  		Promedio Transacciones    TOTAL promedio total
 
 	12:00 am - 2:00 am 			4 								3			120.00
 	2:00 am  - 4:00 am 			9 								4			200.00

@@ -40,7 +40,7 @@
         <div class="col-sm-10 input-field">
           <select class="form-control" id="selCategoria" name="selCategoria">
             <option></option>
-            @foreach($categoria as $categoria)
+            @foreach($categorias as $categoria)
               <option value="{{ $categoria->id }}">{{$categoria->nombre}}</option>
             @endforeach
           </select>
