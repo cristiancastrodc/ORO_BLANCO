@@ -13,7 +13,7 @@
           <label class="col-sm-2 control-label">Usuario:</label>
           <div class="col-sm-10">
             <p class="form-control-static">{{ $nombre }}</p>
-          </div>          
+          </div>
         </div>
         <div class="form-group">
           <label class="col-sm-2 control-label">Hora de Apertura:</label>
@@ -25,25 +25,25 @@
           <label class="col-sm-2 control-label">Hora de Cierre:</label>
           <div class="col-sm-10">
             <p class="form-control-static">{{ $sesion->fecha_hora_fin }}</p>
-          </div>          
+          </div>
         </div>
         <div class="form-group">
           <label class="col-sm-2 control-label">Monto Inicial:</label>
           <div class="col-sm-10">
             <p class="form-control-static">S/. {{ $sesion->monto_inicial }}</p>
-          </div>          
+          </div>
         </div>
         <div class="form-group">
           <label class="col-sm-2 control-label">Ingresos:</label>
           <div class="col-sm-10">
             <p class="form-control-static">S/. {{ $sesion->ingresos }}</p>
-          </div>          
+          </div>
         </div>
         <div class="form-group">
           <label class="col-sm-2 control-label">Egresos:</label>
           <div class="col-sm-10">
             <p class="form-control-static">S/. {{ $sesion->egresos }}</p>
-          </div>          
+          </div>
         </div>
         <div class="form-group">
           <label class="col-sm-2 control-label">Saldo:</label>

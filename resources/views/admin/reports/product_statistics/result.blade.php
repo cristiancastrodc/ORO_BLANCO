@@ -1,12 +1,12 @@
 @extends('layouts.dashboard')
 
 @section('title')
-  Reporte de Ventas
+  Reporte de Estadístico de Productos
 @endsection
 
 @section('content')
   <div class="col-sm-8">
-    <h2 class="font-main-color">Reporte de Ventas</h2>    
+    <h2 class="font-main-color">Reporte de Estadístico de Productos</h2>
     <div class="form-group">
       <label class="col-sm-2 control-label">{{ $nom_fecha }}:</label>
       <div class="col-sm-10">

@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Sale;
 use App\Category;
 use App\Product;
-use App\SaleDetail;
 use App\SaleAmounts;
 use App\SaleDetail;
 

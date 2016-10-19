@@ -1,12 +1,12 @@
 @extends('layouts.dashboard')
 
 @section('title')
-  Estadistico de Ventas
+  Reporte de Estadístico de Ventas
 @endsection
 
 @section('content')
   <div class="col-sm-8">
-    <h2 class="font-main-color">Estadistico de Ventas</h2>    
+    <h2 class="font-main-color">Reporte de Estadístico de Ventas</h2>
     <div class="form-group">
       <table class="table">
         <tr>

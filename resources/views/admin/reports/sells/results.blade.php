@@ -38,7 +38,7 @@
               <td>Sub Total (S/)</td>
               <td>IGV (S/)</td>
               <td>Total (S/)</td>
-              <td>Efectivo (S/)</td>
+              <td>¿Anulada?</td>
               <td>Detalle</td>
             </tr>
             @foreach($ventas as $venta)
@@ -51,7 +51,7 @@
               <td class="text-right">{{ $venta->sub_total }}</td>
               <td class="text-right">{{ $venta->igv }}</td>
               <td class="text-right">{{ $venta->total }}</td>
-              <td class="text-right">{{ $venta->efectivo }}</td>
+              <td>@if(boolval($venta->esta_anulada)) Si @endif</td>
               <td><a ng-click="mostrarDetalle({{ $venta->id }})"><i class="material-icons">receipt</i></a></td>
             </tr>
             @endforeach

@@ -14,6 +14,7 @@ Ventas:
     ✔ Seleccionar la cantidad para cada artículo seleccionado. @done (16-10-04 05:29)
     ☐ Filtrar productos por categoría.
     ☐ Quitar delay en la búsqueda.
+    ☐ Ticket factura no muestra Razon Social.
   Movimientos de caja:
   Reportes:
     ✔ Resumen de Ventas @done (16-09-15 05:47)
@@ -21,6 +22,7 @@ Admin:
   ✔ Administración de Productos @done (16-09-15 06:24)
   ✔ Configuración empresa: Recuperar datos @done (16-09-13 07:43)
   ☐ Generar Backups de la Base de Datos
+  ☐ Anular venta debe de funcionar para facturas y mostrar ayuda para el nro. de ticket.
   Reportes:
    ☐ Todos los reportes.
 Usuario:

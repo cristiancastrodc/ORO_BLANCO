@@ -1,17 +1,17 @@
 @extends('layouts.dashboard')
 
 @section('title')
-  Reporte de Ventas
+  Reporte de Resumen de Ventas
 @endsection
 
 @section('content')
   <div class="col-sm-8">
-    <h2 class="font-main-color">Reporte de Ventas</h2>    
+    <h2 class="font-main-color">Reporte de Resumen de Ventas</h2>
     <div class="form-group">
       <table class="table">
         <tr>
           <td>Fecha</td>
-          <td>Cant. Tansacciones</td>
+          <td>Cant. Transacciones</td>
           <td>Sub Total (S/)</td>
           <td>IGV (S/)</td>
           <td>Total (S/)</td>
