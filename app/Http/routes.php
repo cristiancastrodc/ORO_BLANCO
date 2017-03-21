@@ -36,6 +36,7 @@ Route::get('admin/reportes/estadistico_productos/filtrar','ReportsAdminControlle
 Route::post('admin/reportes/estadistico_productos/generar','ReportsAdminController@generarEstadisticoProductos');
 Route::get('admin/reportes/resumen_ventas/filtrar','ReportsAdminController@filtrarResumenVentas');
 Route::post('admin/reportes/resumen_ventas/generar','ReportsAdminController@generarResumenVentas');
+Route::post('admin/usuario/actualizar/{id_usuario}', 'UsersController@update');
 # Rutas para el usuario de ventas
 Route::get('ventas/verificar_sesion', 'SalesController@verificarSesion');
 Route::get('ventas/punto_de_venta', 'SalesController@index');

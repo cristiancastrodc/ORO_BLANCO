@@ -47,9 +47,9 @@
                 </a>
               </li>
               <li>
-                <a href="{{ url('/admin/usuarios/create') }}" class="text-center">
+                <a href="{{ url('/admin/usuarios') }}" class="text-center">
                   <i class="material-icons md-36">person_add</i><br>
-                  Crear Usuarios
+                  Usuarios
                 </a>
               </li>
               <li>
@@ -121,7 +121,7 @@
     </div>
     <div class="row">
       @yield('content')
-    </div>
+    </div><!-- row -->
   </div>
   <div class="outer-container">
     @yield('outer-container')

@@ -27,7 +27,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = User::all();
+        return view('admin.users.index', ['usuarios' => $usuarios]);
     }
 
     /**
@@ -69,7 +70,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $usuario = User::find($id);
+        return view('admin.users.edit', ['usuario' => $usuario]);
     }
 
     /**
@@ -92,7 +94,20 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuario = User::find($id);
+        if ($usuario) {
+            $usuario->user = $request['tbUser'];
+            $usuario->dni = $request['tbDNI'];
+            $usuario->nombres = $request['tbFirstName'];
+            $usuario->apellidos = $request['tbLastName'];
+            $usuario->tipo = $request['selRole'];
+            $usuario->save();
+            Session::flash('message', 'Usuario actualizado correctamente.');
+            return Redirect::to('admin/usuarios');
+        } else {
+            Session::flash('message', 'Error.');
+            return Redirect::to('admin/usuarios');
+        };
     }
 
     /**

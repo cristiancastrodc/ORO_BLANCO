@@ -37,7 +37,7 @@
 @section('scripts')
 <script>
   $(document).ready(function(){
-     $('[data-toggle="tooltip"]').tooltip({animation: true, delay: {show: 300, hide: 300}});   
+     $('[data-toggle="tooltip"]').tooltip({animation: true, delay: {show: 300, hide: 300}});
   });
 </script>
 @endsection
