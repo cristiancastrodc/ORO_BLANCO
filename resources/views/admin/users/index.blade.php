@@ -62,7 +62,7 @@
 
 @section('scripts')
   <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
        $('[data-toggle="tooltip"]').tooltip({animation: true, delay: {show: 150, hide: 150}});
     });
   </script>

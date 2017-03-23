@@ -1,5 +1,4 @@
 Administrador:
- ☐ Inhabilitar usuario.
  ☐ Eliminar producto
  ☐ Desactivar producto
  ☐ Anular venta debe de funcionar para facturas y mostrar ayuda para el nro. de ticket.
@@ -17,6 +16,8 @@ Ventas:
  ☐ Punto de Venta: Ticket factura no muestra Razon Social.
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ Usuarios inhabilitados no deben poder iniciar sesión. @started(17-03-23 11:19) @done (17-03-23 11:22) @lasted(0:03) @project(General)
+ ✔ Inhabilitar usuario. @started(17-03-23 10:08) @done (17-03-23 11:07) @lasted(0:59) @project(Administrador)
  ✔ Eliminar usuario. @started(17-03-21 08:55) @done (17-03-23 10:07) @lasted(2 days, 1:12) @project(Administrador)
  ✔ Todos los reportes. @done (17-03-21 08:52) @project(Admin / Reportes)
  ✔ Modificar contraseña @done (17-03-21 08:52) @project(Usuario)

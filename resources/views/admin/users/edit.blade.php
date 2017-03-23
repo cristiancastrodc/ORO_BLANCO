@@ -44,6 +44,23 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="estado" class="col-sm-2 control-label">Estado:</label>
+        <div class="col-sm-10">
+          <div class="radio">
+            <label>
+              <input type="radio" name="estado" id="estadoHabilitado" value="1" @if($usuario->estado == 1) checked @endif>
+              Habilitado
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="estado" id="estadoInhabilitado" value="0" @if($usuario->estado == 0) checked @endif>
+              Inhabilitado
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" class="btn btn-primary main-color btn-ob waves-effect waves-light">Guardar</button>
         </div>

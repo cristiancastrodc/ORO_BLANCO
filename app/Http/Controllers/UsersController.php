@@ -58,6 +58,7 @@ class UsersController extends Controller
       'nombres' => $request['tbFirstName'],
       'apellidos' => $request['tbLastName'],
       'tipo' => $request['selRole'],
+      'estado' => $request['estado'],
       ]);
 
     Session::flash('message', 'Usuario creado correctamente.');
@@ -92,6 +93,7 @@ class UsersController extends Controller
       $usuario->nombres = $request['tbFirstName'];
       $usuario->apellidos = $request['tbLastName'];
       $usuario->tipo = $request['selRole'];
+      $usuario->estado = $request['estado'];
       $usuario->save();
       Session::flash('message', 'Usuario actualizado correctamente.');
       return Redirect::to('admin/usuarios');
@@ -127,7 +129,7 @@ class UsersController extends Controller
         $respuesta['resultado'] = 'false';
         $respuesta['mensaje'] = 'Usuario no existe.';
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $respuesta['resultado'] = 'false';
       $respuesta['mensaje'] = $e->getMessage();
     }
@@ -139,8 +141,14 @@ class UsersController extends Controller
    */
   public function login(Request $request) {
     if (Auth::attempt(['user' => $request['tbUser'], 'password' => $request['tbPassword']])) {
-      Session::flash('message', 'Bienvenido de nuevo.');
-      return Redirect::to('dashboard');
+      $estado = Auth::user()->estado;
+      if ($estado == 1) {
+        Session::flash('message', 'Bienvenido de nuevo.');
+        return Redirect::to('dashboard');
+      } else {
+        Session::flash('error', 'El usuario no se encuentra habilitado.');
+        return Redirect::to('/');
+      }
     } else {
       Session::flash('error', 'El usuario o contraseña son incorrectos.');
       return Redirect::to('/');
