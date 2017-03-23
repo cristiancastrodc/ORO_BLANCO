@@ -3,9 +3,13 @@
 @section('title')
   Administrar Productos
 @endsection
+@section('css')
+  <link rel="stylesheet" href="{{ asset('bower_resources/bootstrap-sweetalert/dist/sweetalert.css') }}">
+@endsection
 
 @section('content')
-  <div class="col-sm-8">
+<div ng-app="administrarProductos" ng-controller="productosController">
+  <div class="col-sm-9">
     <h2 class="font-main-color">Administrar Productos</h2>
     <table class="table table-hover">
       <thead>
@@ -25,13 +29,33 @@
           <td class="text-uppercase">{{ $producto->descripcion_corta }}</td>
           <td class="text-right">{{ $producto->precio_venta }}</td>
           <td>
-            <a href="{{ url('admin/productos', $producto->id) }}" class="btn-flat" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">mode_edit</i></a>
+            <a href="{{ url('admin/productos', $producto->id) }}" class="btn-flat btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">mode_edit</i></a>
+            <button class="btn-danger btn-xs btn-no-border waves-effect" ng-click="confirmarEliminacion({{ $producto->id }})"><i class="material-icons">delete</i></button>
           </td>
         </tr>
         @endforeach
       </tbody>
     </table>
   </div>
+  <!-- Modal -->
+  <div class="modal fade" id="modalConfirmacion" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>¿Realmente desea eliminar el producto?</p>
+        </div>
+        <div class="modal-footer ob-modal-footer">
+          <button type="button" class="btn btn-flat" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" ng-click="eliminarProducto()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 
 @section('scripts')
@@ -40,4 +64,7 @@
      $('[data-toggle="tooltip"]').tooltip({animation: true, delay: {show: 300, hide: 300}});
   });
 </script>
+<script src="{{ asset('js/angular.min.js') }}" ></script>
+  <script src="{{ asset('bower_resources/bootstrap-sweetalert/dist/sweetalert.min.js') }}" ></script>
+  <script src="{{ asset('js/apps/productos.administrar.js') }}" ></script>
 @endsection
