@@ -61,13 +61,13 @@ class Sale extends Model
     public static function estadisticoProductos($fecha_inicial, $fecha_final, $categoria)
     {
         return Sale::join('sale_details', 'sales.id', '=', 'sale_details.id_venta')
-                   ->join('products', 'id_producto', '=', 'products.id')
-                   ->join('categories', 'products.id_categoria', '=', 'categories.id')
-                   ->whereDate('fecha_hora_emision', '>=', $fecha_inicial)
-                   ->whereDate('fecha_hora_emision', '<=', $fecha_final)
+                   ->join('products', 'sale_details.id_producto', '=', 'products.id')
+                   ->whereDate('sales.fecha_hora_emision', '>=', $fecha_inicial)
+                   ->whereDate('sales.fecha_hora_emision', '<=', $fecha_final)
                    ->where('products.id_categoria', '=', $categoria)
-                   ->where('esta_anulada', false)
+                   ->where('sales.esta_anulada', false)
                    ->select('products.codigo', 'products.descripcion', 'products.precio_venta', DB::raw('SUM(sale_details.cantidad) as cantidad'), DB::raw('SUM(sale_details.precio_total) as total'))
+                   ->groupBy('products.id')
                    ->get();
     }
 
