@@ -7,6 +7,13 @@ var app = angular.module('administrarProductos', [], function($interpolateProvid
 app.controller('productosController', function ($scope, $http) {
   // Atributos
   $scope.id_producto = ''
+  $scope.productos = []
+  $scope.estado = 0
+  // Métodos que se ejecutan al inicializar el módulo
+  $http.get('/admin/productos/filtrar/0')
+  .success(function(response) {
+    $scope.productos = response;
+  })
   // Funciones
   $scope.confirmarEliminacion = function (id_producto) {
     $scope.id_producto = id_producto
@@ -23,7 +30,11 @@ app.controller('productosController', function ($scope, $http) {
           text : "Producto eliminado correctamente.",
           type : "success",
         }, function () {
-          window.location.reload()
+          var ruta = '/admin/productos/filtrar/' + $scope.estado
+          $http.get(ruta)
+          .success(function(response) {
+            $scope.productos = response;
+          })
         })
       } else {
         swal({
@@ -33,5 +44,12 @@ app.controller('productosController', function ($scope, $http) {
         })
       }
     });
+  }
+  $scope.filtrarProductos = function (estado) {
+    var ruta = '/admin/productos/filtrar/' + estado
+    $http.get(ruta)
+    .success(function(response) {
+      $scope.productos = response;
+    })
   }
 });

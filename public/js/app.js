@@ -111,17 +111,6 @@ app.controller('POSController', function ($scope, $http, API_URL) {
       };
     })
   };
-  /*
-  // Iniciar atributo para filtrar los productos
-  $scope.filtro = '';
-  // Función que filtra los productos
-  $scope.filtrarProductos = function (argument) {
-    $http.get(API_URL + 'productos/filtrar/' + $scope.filtro)
-    .success(function(response) {
-      $scope.products = response;
-    });
-  };
-  */
   // Iniciar el atributo para controlar el nombre y direccion
   $scope.sinDocumento = true;
   // Función para activar/desactivar el nombre y dirección

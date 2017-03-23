@@ -1,5 +1,4 @@
 Administrador:
- ☐ Desactivar producto
  ☐ Anular venta debe de funcionar para facturas y mostrar ayuda para el nro. de ticket.
 General:
  ☐ Generar Backups de la Base de Datos
@@ -18,9 +17,10 @@ Ventas:
  ☐ Punto de Venta: Ticket factura no muestra Razon Social.
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ Desactivar producto. @started(17-03-23 11:26) @done (17-03-23 12:45) @lasted(1:19) @project(Administrador)
  ✔ Usuarios inhabilitados no deben poder iniciar sesión. @started(17-03-23 11:19) @done (17-03-23 11:22) @lasted(0:03) @project(General)
- ✔ Inhabilitar usuario. @started(17-03-23 10:08) @done (17-03-23 11:07) @lasted(0:59) @project(Administrador)
  ✔ Eliminar producto. @started(17-03-23 11:02) @done (17-03-23 11:22) @lasted(0:20) @project(Administrador)
+ ✔ Inhabilitar usuario. @started(17-03-23 10:08) @done (17-03-23 11:07) @lasted(0:59) @project(Administrador)
  ✔ Eliminar usuario. @started(17-03-21 08:55) @done (17-03-23 10:07) @lasted(2 days, 1:12) @project(Administrador)
  ✔ Todos los reportes. @done (17-03-21 08:52) @project(Admin / Reportes)
  ✔ Modificar contraseña @done (17-03-21 08:52) @project(Usuario)

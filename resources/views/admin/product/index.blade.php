@@ -9,8 +9,14 @@
 
 @section('content')
 <div ng-app="administrarProductos" ng-controller="productosController">
-  <div class="col-sm-9">
+  <div class="col-sm-12">
     <h2 class="font-main-color">Administrar Productos</h2>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" ng-model="estado" ng-change="filtrarProductos(estado)" ng-true-value="1" ng-false-value="0">
+        Mostrar sólo productos habilitados.
+      </label>
+    </div>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -18,22 +24,22 @@
           <th>Descripción</th>
           <th>Descripción Corta</th>
           <th>Precio de Venta</th>
+          <th>Estado</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        @foreach($productos as $producto)
-        <tr>
-          <td>{{ $producto->codigo }}</td>
-          <td class="text-uppercase">{{ $producto->descripcion }}</td>
-          <td class="text-uppercase">{{ $producto->descripcion_corta }}</td>
-          <td class="text-right">{{ $producto->precio_venta }}</td>
+        <tr ng-repeat="producto in productos">
+          <td>{@ producto.codigo @}</td>
+          <td class="text-uppercase">{@ producto.descripcion @}</td>
+          <td class="text-uppercase">{@ producto.descripcion_corta @}</td>
+          <td class="text-right">{@ producto.precio_venta @}</td>
+          <td>{@ producto.estado == 1? 'Habilitado' : 'Inhabilitado' @}</td>
           <td>
-            <a href="{{ url('admin/productos', $producto->id) }}" class="btn-flat btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">mode_edit</i></a>
-            <button class="btn-danger btn-xs btn-no-border waves-effect" ng-click="confirmarEliminacion({{ $producto->id }})"><i class="material-icons">delete</i></button>
+            <a ng-href="/admin/productos/{@ producto.id @}" class="btn-flat btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">mode_edit</i></a>
+            <button class="btn-danger btn-xs btn-no-border waves-effect" ng-click="confirmarEliminacion(producto.id)"><i class="material-icons">delete</i></button>
           </td>
         </tr>
-        @endforeach
       </tbody>
     </table>
   </div>
