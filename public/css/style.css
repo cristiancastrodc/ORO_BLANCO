@@ -128,3 +128,12 @@ a {
 .dtp-btn-ok {
   box-shadow: none;
 }
+.btn-no-border {
+  border: none;
+}
+.ob-modal-footer {
+  padding: 0;
+}
+.modal-footer .btn+.btn {
+  margin-bottom: 10px;
+}

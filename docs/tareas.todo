@@ -1,42 +1,38 @@
- ☐ Eliminar usuario
+Administrador:
+ ☐ Inhabilitar usuario.
  ☐ Eliminar producto
  ☐ Desactivar producto
+ ☐ Anular venta debe de funcionar para facturas y mostrar ayuda para el nro. de ticket.
+General:
  ☐ Generar Backups de la Base de Datos
-
+ ☐ Validar Requests
+ ☐ Página 404
+ ☐ Mejorar Estilos
+ ☐ Redireccionar si el usuario ya está logueado
+ ☐ Validar que los módulos que usen Auth, primero verifiquen si hay sesión
+ ☐ Probar con fondo de body gris y fondo blanco en contenido
 Ventas:
-  ✔ Cierre de Caja @done (16-09-13 07:42)
-  ✔ Anulación de Venta @done (16-09-14 23:00)
-  Punto de Venta:
-    ✔ Recuperar Cliente con DNI o RUC @done (16-09-14 03:38)
-    ✔ Buscador de Productos @done (16-09-11 05:58)
-    ✔ Arreglar botones de Productos @done (16-09-13 07:32)
-    ☐ Impresión de tickets usando controlador y validando si la instalación es local o remota.
-    ☐ Si factura, obligatorio RUC, Razon Social y Direccion
-    ✔ Poner el focus al abrir el modal @done (16-09-13 21:30)
-    ✔ Si no hay DNI, no permitir nombre ni dirección. @done (16-09-13 07:39)
-    ✘ Verificar los valores que se envían al ticket @cancelled (16-09-13 07:41)
-    ✔ No guardar cliente vacío @done (16-09-14 03:52)
-    ✔ Seleccionar la cantidad para cada artículo seleccionado. @done (16-10-04 05:29)
-    ☐ Filtrar productos por categoría.
-    ☐ Quitar delay en la búsqueda.
-    ☐ Ticket factura no muestra Razon Social.
-  Movimientos de caja:
-  Reportes:
-    ✔ Resumen de Ventas @done (16-09-15 05:47)
-Admin:
-  ✔ Administración de Productos @done (16-09-15 06:24)
-  ✔ Configuración empresa: Recuperar datos @done (16-09-13 07:43)
-  ☐ Generar Backups de la Base de Datos
-  ☐ Anular venta debe de funcionar para facturas y mostrar ayuda para el nro. de ticket.
-  Reportes:
-   ☐ Todos los reportes.
-Usuario:
-  ☐ Modificar contraseña
-Programacion:
-  ☐ Request
-  ☐ 404
-  ☐ Estilos
-  ✔ Descargar archivos externos y referenciar @done (16-09-14 05:29)
-  ☐ Redireccionar si el usuario ya está logueado
-  ☐ Validar que los módulos que usen Auth, primero verifiquen si hay sesión
-  ☐ Probar con fondo de body gris y fondo blanco en contenido
+ ☐ Punto de Venta: Impresión de tickets usando controlador y validando si la instalación es local o remota.
+ ☐ Punto de Venta: Si factura, obligatorio RUC, Razon Social y Direccion.
+ ☐ Punto de Venta: Ticket factura no muestra Razon Social.
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+ ✔ Eliminar usuario. @started(17-03-21 08:55) @done (17-03-23 10:07) @lasted(2 days, 1:12) @project(Administrador)
+ ✔ Todos los reportes. @done (17-03-21 08:52) @project(Admin / Reportes)
+ ✔ Modificar contraseña @done (17-03-21 08:52) @project(Usuario)
+ ✔ Quitar delay en la búsqueda. @done (17-03-21 08:51) @project(Ventas / Punto de Venta)
+ ✔ Filtrar productos por categoría. @done (17-03-21 08:51) @project(Ventas / Punto de Venta)
+ ✔ Seleccionar la cantidad para cada artículo seleccionado. @done (16-10-04 05:29) @project(Ventas / Punto de Venta)
+ ✔ Administración de Productos @done (16-09-15 06:24) @project(Admin)
+ ✔ Resumen de Ventas @done (16-09-15 05:47) @project(Ventas / Reportes)
+ ✔ Anulación de Venta @done (16-09-14 23:00) @project(Ventas)
+ ✔ Descargar archivos externos y referenciar @done (16-09-14 05:29) @project(Programacion)
+ ✔ No guardar cliente vacío @done (16-09-14 03:52) @project(Ventas / Punto de Venta)
+ ✔ Recuperar Cliente con DNI o RUC @done (16-09-14 03:38) @project(Ventas / Punto de Venta)
+ ✔ Poner el focus al abrir el modal @done (16-09-13 21:30) @project(Ventas / Punto de Venta)
+ ✔ Configuración empresa: Recuperar datos @done (16-09-13 07:43) @project(Admin)
+ ✔ Cierre de Caja @done (16-09-13 07:42) @project(Ventas)
+ ✘ Verificar los valores que se envían al ticket @cancelled (16-09-13 07:41) @project(Ventas / Punto de Venta)
+ ✔ Si no hay DNI, no permitir nombre ni dirección. @done (16-09-13 07:39) @project(Ventas / Punto de Venta)
+ ✔ Arreglar botones de Productos @done (16-09-13 07:32) @project(Ventas / Punto de Venta)
+ ✔ Buscador de Productos @done (16-09-11 05:58) @project(Ventas / Punto de Venta)
