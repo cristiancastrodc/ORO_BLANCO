@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
+use App\SaleDetail;
 use Redirect;
 use Session;
 
@@ -114,7 +115,28 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $respuesta = [];
+        try {
+          $producto = Product::find($id);
+          if ($producto) {
+            $nro_ventas = SaleDetail::where('id_producto', $id)->count();
+            if ($nro_ventas == 0) {
+              $producto->delete();
+              $respuesta['resultado'] = 'true';
+            } else {
+              $respuesta['resultado'] = 'false';
+              $respuesta['mensaje'] = 'Producto ya se utilizó alguna operación.';
+            }
+          }
+          else {
+            $respuesta['resultado'] = 'false';
+            $respuesta['mensaje'] = 'Producto no existe.';
+          }
+        } catch (Exception $e) {
+          $respuesta['resultado'] = 'false';
+          $respuesta['mensaje'] = $e->getMessage();
+        }
+        return $respuesta;
     }
 
     /**

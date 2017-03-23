@@ -1,6 +1,5 @@
 Administrador:
  ☐ Inhabilitar usuario.
- ☐ Eliminar producto
  ☐ Desactivar producto
  ☐ Anular venta debe de funcionar para facturas y mostrar ayuda para el nro. de ticket.
 General:
@@ -11,12 +10,16 @@ General:
  ☐ Redireccionar si el usuario ya está logueado
  ☐ Validar que los módulos que usen Auth, primero verifiquen si hay sesión
  ☐ Probar con fondo de body gris y fondo blanco en contenido
+ ☐ Mejorar el punto de ventas, agregar sub total despues de precio.
+ ☐ Reporte ventas corregir el monto total, no incluir los anulados, mostrar monto total de anulaciones.
+ ☐ Reporte estadistico de ventas no filtra los productos vendidos segun la fecha dada ni fiktra los productos perteneciente a la categoria mandada, muestra el total desde el inicio de apertura de la tienda.
 Ventas:
  ☐ Punto de Venta: Impresión de tickets usando controlador y validando si la instalación es local o remota.
  ☐ Punto de Venta: Si factura, obligatorio RUC, Razon Social y Direccion.
  ☐ Punto de Venta: Ticket factura no muestra Razon Social.
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ Eliminar producto. @started(17-03-23 11:02) @done (17-03-23 11:22) @lasted(0:20) @project(Administrador)
  ✔ Eliminar usuario. @started(17-03-21 08:55) @done (17-03-23 10:07) @lasted(2 days, 1:12) @project(Administrador)
  ✔ Todos los reportes. @done (17-03-21 08:52) @project(Admin / Reportes)
  ✔ Modificar contraseña @done (17-03-21 08:52) @project(Usuario)
