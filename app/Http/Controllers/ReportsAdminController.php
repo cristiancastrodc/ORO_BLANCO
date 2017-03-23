@@ -41,11 +41,19 @@ class ReportsAdminController extends Controller
 
         $nro_ventas = 0;
         $monto_total = 0;
+        $monto_anulado = 0;
         foreach ($ventas as $venta) {
             $nro_ventas++;
-            $monto_total += $venta->total;
+            $anulado = $venta->esta_anulada;
+            if(!$anulado){
+                $monto_total += $venta->total;
+
+            }else {
+                $monto_anulado += $venta->total;
+            }           
         }
         $monto_total = number_format($monto_total, 2);
+        $monto_anulado = number_format($monto_anulado, 2);
 
         $nom_fecha = '';
         if ($fecha_inicial == $fecha_final) {
@@ -57,7 +65,7 @@ class ReportsAdminController extends Controller
         }
 
         return view('admin.reports.sells.results',
-            ['ventas' => $ventas, 'nro_ventas' => $nro_ventas, 'monto_total' => $monto_total, 'fechas' => $fechas, 'fecha' => $fecha, 'nom_fecha' => $nom_fecha]);
+            ['ventas' => $ventas, 'nro_ventas' => $nro_ventas, 'monto_total' => $monto_total, 'fechas' => $fechas, 'fecha' => $fecha, 'nom_fecha' => $nom_fecha, 'monto_anulado' => $monto_anulado]);
     }
     /**
      * Recuperar el detalle de una venta para el reporte.
@@ -117,7 +125,11 @@ class ReportsAdminController extends Controller
         }
 
         return view('admin.reports.product_statistics.result',
-            ['productos' => $productos, 'nom_fecha' => $nom_fecha, 'fechas' => $fechas,]);
+            [
+                'productos' => $productos,
+                'nom_fecha' => $nom_fecha,
+                'fechas' => $fechas,
+            ]);
     }
     /**
      * Filtros para el Resumen de Ventas.

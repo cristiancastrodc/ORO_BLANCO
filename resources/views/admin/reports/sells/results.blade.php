@@ -22,6 +22,12 @@
           </div>
         </div>
         <div class="form-group">
+          <label class="col-sm-2 control-label">Monto Total Anulados:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">S/ {{ $monto_anulado }}</p>
+          </div>
+        </div>
+        <div class="form-group">
           <label class="col-sm-2 control-label">{{ $nom_fecha }}:</label>
           <div class="col-sm-10">
             <p class="form-control-static">{{ $fechas }}</p>

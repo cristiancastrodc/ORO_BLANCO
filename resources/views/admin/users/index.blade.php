@@ -20,6 +20,7 @@
             <th>DNI</th>
             <th>Nombre</th>
             <th>Tipo</th>
+            <th>Estado</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -30,6 +31,7 @@
             <td>{{ $usuario->dni }}</td>
             <td>{{ $usuario->nombres }} {{ $usuario->apellidos }}</td>
             <td>{{ $usuario->tipo }}</td>
+            <td>@if($usuario->estado == '1') Habilitado @else Inhabilitado @endif</td>
             <td>
               <a href="{{ url('admin/usuarios', $usuario->id) }}" class="btn-flat btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><i class="material-icons">mode_edit</i></a>
               <button class="btn-danger btn-xs btn-no-border waves-effect" ng-click="confirmarEliminacion({{ $usuario->id }})"><i class="material-icons">delete</i></button>
