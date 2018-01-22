@@ -9,18 +9,18 @@
     <h2 class="font-main-color">Venta</h2>
     <form class="form-horizontal" method="POST" action="{{ url('/admin/anular') }}">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-      <input type="hidden" name="tbTicket" value="{{ $id_ticket->numero_comprobante }}">
+      <input type="hidden" name="id_ticket" value="{{ $ticket->id }}">
       <div class="form-horizontal">
         <div class="form-group">
           <label class="col-sm-2 control-label">Numero Ticket:</label>
           <div class="col-sm-10">
-            <p class="form-control-static">{{ $id_ticket->serie_comprobante }} - {{ $id_ticket->numero_comprobante }}</p>
+            <p class="form-control-static">{{ $ticket->serie_comprobante }} - {{ $ticket->numero_comprobante }}</p>
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-2 control-label">Fecha y Hora de Emision:</label>
           <div class="col-sm-10">
-            <p class="form-control-static">{{ $id_ticket->fecha_hora_emision }}</p>
+            <p class="form-control-static">{{ $ticket->fecha_hora_emision }}</p>
           </div>
         </div>
         <div class="form-group">

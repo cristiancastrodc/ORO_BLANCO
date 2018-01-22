@@ -5,13 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('title') | Oro Blanco Pastelería</title>
-  <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css')}}">
   @yield('css')
 </head>
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <nav class="navbar accent-color">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -109,6 +109,8 @@
         </div><!-- /.navbar-collapse -->
       </nav>
     </div>
+  </div>
+  <div class="container">
     <div class="row">
       <div class="col-sm-12">
         @if(Session::has('message'))

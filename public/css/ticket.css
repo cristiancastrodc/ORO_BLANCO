@@ -1,0 +1,29 @@
+  .ticket {
+    font-family: monospace;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  h4{
+    margin-bottom: 0;
+  }
+  @media screen {
+    .ticket {
+      visibility: hidden;
+    }
+  }
+  @media print {
+    .ticket > * {
+      font-family: monospace;
+      font-size: 18px;
+    }
+    .ticket > .title {
+      font-size: 35px;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    table {
+      text-transform: uppercase;
+    }
+  }

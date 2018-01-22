@@ -1,8 +1,11 @@
 // Definir la aplicación y la url para los procesos
-var app = angular.module('puntoDeVenta', [])
+var app = angular.module('puntoDeVenta', [], function($interpolateProvider) {
+                   $interpolateProvider.startSymbol('{@');
+                   $interpolateProvider.endSymbol('@}');
+                 })
                  .constant('API_URL', '/ventas/');
 // Definir el controlador
-app.controller('POSController', function ($scope, $http, API_URL) {
+app.controller('POSController', function ($scope, $http, $timeout, API_URL) {
   // Recuperación inicial de todos los productos
   $http.get(API_URL + 'productos/filtrar')
   .success(function(response) {
@@ -45,7 +48,7 @@ app.controller('POSController', function ($scope, $http, API_URL) {
     $('#modalPago').modal('show');
   };
   $('#modalPago').on('shown.bs.modal', function () {
-    $('#tbNumeroDocumento').focus()
+    $('#tbEfectivo').focus()
   });
   // Función que vacía la orden
   $scope.clearOrder = function() {
@@ -150,7 +153,6 @@ app.controller('POSController', function ($scope, $http, API_URL) {
   $scope.categoria = '';
   $scope.asignarCategoria = function (id = '') {
     $scope.categoria = id;
-    console.log($scope.categoria);
   };
   // Función para realizar el filtrado según una categoría
   $scope.filtroCategoria = function(id_categoria, categoria) {
@@ -163,4 +165,46 @@ app.controller('POSController', function ($scope, $http, API_URL) {
     var regex = new RegExp("\\b" + texto, "i");
     return regex.test(descripcion);
   };
+
+  // Métodos y atributos para revalidar la sesión
+  $scope.esSesionValida = true
+  $scope.timeOut = 1000 * 60 * 10
+  $scope.user = null
+  $scope.password = null
+  $scope.mensajeSesion = null
+
+  let countUp = function() {
+    // Verificar si la sesión caducó
+    let ruta = '/sesion/validar'
+    if ($scope.esSesionValida) {
+      $http.get(ruta)
+      .success(function (response) {
+        $scope.esSesionValida = response.resultado
+      })
+      $timeout(countUp, $scope.timeOut);
+    } else {
+      $('#modalSesion').modal('show')
+    }
+  }
+  $timeout(countUp, $scope.timeOut);
+
+  $scope.validarSesion = function () {
+    let url = '/usuario/ventas/login'
+    $http.post(url, {
+      user : $scope.user,
+      password : $scope.password,
+    })
+    .success(function (response) {
+      if (response.redireccionar) {
+        window.location = '/dashboard'
+      } else {
+        $scope.esSesionValida = response.resultado
+        $scope.mensajeSesion = response.mensaje
+        if ($scope.esSesionValida) {
+          $('#modalSesion').modal('hide')
+          $timeout(countUp, $scope.timeOut);
+        }
+      }
+    })
+  }
 });

@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -18,9 +16,16 @@ use Session;
 use Auth;
 use DB;
 use Redirect;
-
 class SalesController extends Controller
 {
+  /**
+   * Aplicar Middlewares
+   */
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
   /**
    * Display a listing of the resource.
    *
@@ -35,7 +40,6 @@ class SalesController extends Controller
       return Redirect::to('/ventas/caja/aperturar');
     }
   }
-
   /**
    * Verificar si el usuario apertura la sesión de ventas, sino redireccionar
    */
@@ -47,14 +51,12 @@ class SalesController extends Controller
       return Redirect::to('/ventas/caja/aperturar');
     }
   }
-
   /**
    * Aperturar la sesión de ventas
    */
   public function aperturarSesion() {
     return view('ventas.caja.aperturar');
   }
-
   /**
    * Aperturar la sesión de ventas
    */
@@ -69,7 +71,6 @@ class SalesController extends Controller
     $ruta = '';
     try {
       DB::beginTransaction();
-
       // --- Realizar la venta
       // Cliente
       $id_cliente = '';
@@ -148,14 +149,12 @@ class SalesController extends Controller
       $sesion->ingresos = floatval($sesion->ingresos) + $total;
       $sesion->monto_actual = floatval($sesion->monto_inicial) + floatval($sesion->ingresos) - floatval($sesion->egresos);
       $sesion->save();
-
       DB::commit();
-
       // --- Retornar la ruta para imprimir el comprobante
       $ruta = '/ventas/punto_de_venta/ticket/' . $id_venta;
       $mensaje = 'Venta Realizada';
       $resultado = true;
-    } catch(\Exception $e){
+    } catch(\Exception $e) {
       DB::rollback();
       $mensaje = $e->getMessage();
     }
@@ -166,7 +165,6 @@ class SalesController extends Controller
       'ruta' => $ruta,
       ]);
   }
-
   /**
    * Imprimir ticket de venta
    */
@@ -177,6 +175,7 @@ class SalesController extends Controller
     $direccion = $configuracion->direccion;
     $venta = Sale::find($id_venta);
     $fecha_emision = $venta->fecha_hora_emision;
+    $serie = $venta->serie_comprobante;
     $comprobante = $venta->numero_comprobante;
     $cliente = Customer::find($venta->id_cliente);
     $cliente_numero_documento = '';
@@ -190,12 +189,11 @@ class SalesController extends Controller
     $montos = SaleAmounts::where('id_venta', '=', $id_venta)->first();
     // Validar para boletas o facturas
     if ($venta->tipo_comprobante == 'boleta') {
-      return view('ventas.ticket', compact('razon_social', 'ruc', 'direccion', 'fecha_emision', 'comprobante', 'cliente_numero_documento', 'cliente_razon_social', 'productos', 'montos'));
+      return view('ventas.ticket', compact('razon_social', 'ruc', 'direccion', 'fecha_emision', 'serie', 'comprobante', 'cliente_numero_documento', 'cliente_razon_social', 'productos', 'montos'));
     } else {
-      return view('ventas.ticket_factura', compact('razon_social', 'ruc', 'direccion', 'fecha_emision', 'comprobante', 'cliente', 'productos', 'montos'));
+      return view('ventas.ticket_factura', compact('razon_social', 'ruc', 'direccion', 'fecha_emision', 'serie', 'comprobante', 'cliente', 'productos', 'montos'));
     }
   }
-
   /**
   * Anular Venta
   */
@@ -203,68 +201,57 @@ class SalesController extends Controller
   {
     return view('admin.cancel.anulacion');
   }
-
   public function mostrarVenta(Request $request)
   {
-    $id_ticket = Sale::where('numero_comprobante', '=', $request['tbTicket'])
-          ->where('esta_anulada', '=', false)
-          ->first();
-
-    if ($id_ticket) {
-      $detalle = SaleDetail::where('id_venta', '=', $id_ticket->id)
-            ->get();
-      $amounts = SaleAmounts::where('id_venta', '=', $id_ticket->id)
-            ->first();
-
-      $usuario = User::where('id', '=', $id_ticket->id_usuario)
-            ->first();
-
-      $cliente = Customer::where('id', '=', $id_ticket->id_cliente)
-            ->first();
-
+    $ticket = Sale::where('numero_comprobante', '=', $request['tbTicket'])
+                  ->where('tipo_comprobante', $request['tipo_comprobante'])
+                  ->where('esta_anulada', '=', false)
+                  ->first();
+    if ($ticket) {
+      $detalle = SaleDetail::where('id_venta', '=', $ticket->id)
+                           ->get();
+      $amounts = SaleAmounts::where('id_venta', '=', $ticket->id)
+                            ->first();
+      $usuario = User::where('id', '=', $ticket->id_usuario)
+                     ->first();
+      $cliente = Customer::where('id', '=', $ticket->id_cliente)
+                         ->first();
       $usunombre = $usuario->nombres . ' ' . $usuario->apellidos;
-
       if ($cliente) {
         $nombre = $cliente->nombre_razon_social;
-        return view('admin.cancel.detalle_venta', compact('id_ticket', 'detalle', 'amounts', 'usunombre', 'nombre'));
-      }else{
+        return view('admin.cancel.detalle_venta', compact('ticket', 'detalle', 'amounts', 'usunombre', 'nombre'));
+      } else{
         $nombre = " ";
-        return view('admin.cancel.detalle_venta', compact('id_ticket', 'detalle', 'amounts', 'usunombre', 'nombre'));
+        return view('admin.cancel.detalle_venta', compact('ticket', 'detalle', 'amounts', 'usunombre', 'nombre'));
       }
-
     } else {
-      Session::flash('message', 'No se encontro ninguna venta con ese numero de ticket o el ticket ya fue anulado.');
-      return Redirect::to('/dashboard');
+      Session::flash('message', 'No se encontró ninguna venta con ese número de ticket o el ticket ya fue anulado.');
+      return Redirect::to('/admin/anulacion');
     }
   }
-
   public function anularVenta(Request $request)
   {
-    $id_ticket = Sale::where('numero_comprobante', '=', $request['tbTicket'])
-          ->first();
+    $ticket = Sale::find($request['id_ticket']);
     $egreso = SaleSession::where('estado', '=', 'abierta')
-        ->first();
-    $amounts = SaleAmounts::where('id_venta', '=', $id_ticket->id)
-            ->first();
+                         ->first();
+    $amounts = SaleAmounts::where('id_venta', '=', $ticket->id)
+                          ->first();
     $monto = $amounts->total;
-    if ($id_ticket) {
-      if($egreso){
-        $id_ticket->esta_anulada = true;
-        $id_ticket->save();
-
+    if ($ticket) {
+      if($egreso) {
+        $ticket->esta_anulada = true;
+        $ticket->save();
         $egreso->egresos = $egreso->egresos + $monto;
         $egreso->monto_actual = $egreso->monto_actual - $monto;
         $egreso->save();
-
         Session::flash('message', 'Venta anulada correctamente.');
         return Redirect::to('/dashboard');
       }
-    } else{
-      Session::flash('message', 'No se pudo anulada la venta.');
+    } else {
+      Session::flash('message', 'No se pudo anular la venta.');
       return Redirect::to('/dashboard');
     }
   }
-
   /**
    * Recuperar datos de un cliente a partir del número de documento
    */
@@ -273,56 +260,42 @@ class SalesController extends Controller
             ->select('nombre_razon_social','numero_documento', 'direccion')
             ->first();
   }
-
   /**
    * Ver Resumen de Ventas
    */
-  public function resumenVentas(){
-
+  public function resumenVentas() {
     $sesion = SaleSession::where('id_usuario', '=', Auth::user()->id)
-               ->where('estado','=', 'abierta')
-               ->first();
+                         ->where('estado', '=', 'abierta')
+                         ->first();
     if ($sesion) {
       $hora_apertura = $sesion->fecha_hora_inicio;
       $venta = Sale::where('fecha_hora_emision', '>=', $hora_apertura)
           ->where('id_usuario', '=', Auth::user()->id)
           ->get();
       return view('ventas.resumen_venta', compact('venta'));
-
     }else{
       Session::flash('message', 'No se encontro ninguna caja con sesión aperturada.');
       return Redirect::to('/dashboard');
     }
-
   }
-
-  public function detalleVentas($id_venta){
-
+  public function detalleVentas($id_venta) {
     $id_ticket = Sale::where('id', '=', $id_venta)
-          ->first();
-
+                     ->first();
      if ($id_ticket) {
-
       $detalle = SaleDetail::where('id_venta', '=', $id_venta)
             ->get();
       $amounts = SaleAmounts::where('id_venta', '=', $id_venta)
             ->first();
-
       $usuario = User::where('id', '=', $id_ticket->id_usuario)
             ->first();
-
       $cliente = Customer::where('id', '=', $id_ticket->id_cliente)
             ->first();
-
       $usunombre = $usuario->nombres . ' ' . $usuario->apellidos;
-
-      if($id_ticket->esta_anulada){
+      if($id_ticket->esta_anulada) {
         $anulado = 'Si';
       }else{
         $anulado = 'No';
       }
-
-
       if ($cliente) {
         $nombre = $cliente->nombre_razon_social;
         return view('ventas.det_venta', compact('id_ticket', 'detalle', 'amounts', 'usunombre', 'nombre', 'anulado'));
@@ -335,5 +308,4 @@ class SalesController extends Controller
       return Redirect::to('/dashboard');
     }
   }
-
 }

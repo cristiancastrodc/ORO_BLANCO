@@ -11,7 +11,7 @@
 |
 */
 # Rutas generales
-Route::get('/', function () { return view('login'); });
+Route::get('/', 'UsersController@inicio');
 Route::post('login', 'UsersController@login');
 Route::get('logout', 'UsersController@logout');
 Route::get('dashboard', 'UsersController@dashboard');
@@ -22,7 +22,7 @@ Route::resource('admin/usuarios','UsersController');
 Route::resource('admin/productos','ProductController');
 Route::resource('admin/business_config','BusinessConfigController');
 Route::get('admin/anulacion', 'SalesController@anulacion');
-Route::get('admin/mostrar_venta', 'SalesController@mostrarVenta');
+Route::post('admin/mostrar_venta', 'SalesController@mostrarVenta');
 Route::post('admin/anular', 'SalesController@anularVenta');
 Route::post('admin/producto/actualizar/{id_producto}', 'ProductController@update');
 Route::resource('admin/categorias','CategoryController');
@@ -56,3 +56,16 @@ Route::get('ventas/punto_de_venta/cliente/{numero_documento?}', 'SalesController
 Route::get('ventas/resumen_ventas', 'SalesController@resumenVentas');
 Route::get('ventas/detalle/{id_venta}', 'SalesController@detalleVentas');
 Route::get('ventas/categorias', 'CategoryController@categoriasParaVentas');
+
+// Nuevas rutas
+Route::get('sesion/validar', 'SessionsController@esSesionValida');
+Route::post('usuario/{tipo}/login', 'UsersController@reiniciarSesion');
+
+// Otras rutas auxiliares
+Route::get('deploy', function() {
+  $resultado = [];
+  $resultado['exitCode0'] = Artisan::call('cache:clear');
+  $resultado['exitCode1'] = Artisan::call('config:cache');
+  $resultado['exitCode2'] = Artisan::call('view:clear');
+  dd($resultado);
+});

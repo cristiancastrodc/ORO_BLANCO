@@ -1,10 +1,10 @@
 @extends('layouts.dashboard')
 
 @section('title')
-  Administrar Productos
+Administrar Productos
 @endsection
 @section('css')
-  <link rel="stylesheet" href="{{ asset('bower_resources/bootstrap-sweetalert/dist/sweetalert.css') }}">
+<link rel="stylesheet" href="{{ asset('bower_resources/bootstrap-sweetalert/dist/sweetalert.css') }}">
 @endsection
 
 @section('content')
@@ -61,16 +61,19 @@
       </div>
     </div>
   </div>
+  <!-- Modal para reiniciar sesión -->
+  @include('layouts.sesion')
+  <!-- /Modal para reiniciar sesión -->
 </div>
 @endsection
 
 @section('scripts')
 <script>
   $(document).ready(function(){
-     $('[data-toggle="tooltip"]').tooltip({animation: true, delay: {show: 300, hide: 300}});
+   $('[data-toggle="tooltip"]').tooltip({animation: true, delay: {show: 300, hide: 300}});
   });
 </script>
 <script src="{{ asset('js/angular.min.js') }}" ></script>
-  <script src="{{ asset('bower_resources/bootstrap-sweetalert/dist/sweetalert.min.js') }}" ></script>
-  <script src="{{ asset('js/apps/productos.administrar.js') }}" ></script>
+<script src="{{ asset('bower_resources/bootstrap-sweetalert/dist/sweetalert.min.js') }}" ></script>
+<script src="{{ asset('js/apps/productos.administrar.js') }}" ></script>
 @endsection

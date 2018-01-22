@@ -19,7 +19,7 @@ class UsersController extends Controller
    */
   public function __construct()
   {
-    $this->middleware('auth', ['except' => 'login']);
+    $this->middleware('auth', ['except' => ['login', 'inicio', 'reiniciarSesion']]);
   }
 
   /**
@@ -59,7 +59,7 @@ class UsersController extends Controller
       'apellidos' => $request['tbLastName'],
       'tipo' => $request['selRole'],
       'estado' => $request['estado'],
-      ]);
+    ]);
 
     Session::flash('message', 'Usuario creado correctamente.');
     return Redirect::to('/admin/usuarios/create');
@@ -175,7 +175,7 @@ class UsersController extends Controller
    */
   public function mostrarPerfil(){
     $configuracion = User::where('id', '=', Auth::user()->id)
-            ->first();
+    ->first();
     $nombre = '';
     $apellidos ='';
     if ($configuracion) {
@@ -203,5 +203,23 @@ class UsersController extends Controller
     }
   }
 
+  public function inicio() {
+    if (Auth::check()) {
+      return redirect('dashboard');
+    }
+    return view('login');
+  }
 
+  public function reiniciarSesion(Request $request, $tipo)
+  {
+    $resultado = Auth::attempt(['user' => $request['user'], 'password' => $request['password'], 'estado' => 1]);
+    if ($resultado && Auth::user()->tipo !== $tipo) {
+      Session::flash('message', 'Se detectó un cambio de usuario al revalidar la sesión.');
+    }
+    return [
+      'resultado' => $resultado,
+      'mensaje' => !$resultado ? 'El usuario y/o contraseña son incorrectos.' : null,
+      'redireccionar' => $resultado ? Auth::user()->tipo !== $tipo : false,
+    ];
+  }
 }

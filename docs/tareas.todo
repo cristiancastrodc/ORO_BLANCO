@@ -1,20 +1,21 @@
 Administrador:
- ☐ Anular venta debe de funcionar para facturas y mostrar ayuda para el nro. de ticket.
 General:
- ☐ Generar Backups de la Base de Datos
  ☐ Validar Requests
  ☐ Página 404
  ☐ Mejorar Estilos
- ☐ Redireccionar si el usuario ya está logueado
- ☐ Validar que los módulos que usen Auth, primero verifiquen si hay sesión
- ☐ Probar con fondo de body gris y fondo blanco en contenido
- ☐ Mejorar el punto de ventas, agregar sub total despues de precio.
 Ventas:
  ☐ Punto de Venta: Impresión de tickets usando controlador y validando si la instalación es local o remota.
- ☐ Punto de Venta: Si factura, obligatorio RUC, Razon Social y Direccion.
- ☐ Punto de Venta: Ticket factura no muestra Razon Social.
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ Anular venta debe de funcionar para facturas y mostrar ayuda para el nro. de ticket. @started(18-01-22 11:15) @done (18-01-22 11:38) @lasted(0:23) @project(Administrador)
+ ✔ Al revalidar sesión, usuario y contraseña deben de ser obligatorios. @started(18-01-22 10:57) @done (18-01-22 11:08) @lasted(0:11) @project(General)
+ ✔ Punto de Venta: Si factura, obligatorio RUC, Razon Social y Direccion. @started(18-01-22 10:18) @done (18-01-22 10:44) @lasted(0:26) @project(Ventas)
+ ✔ Punto de Venta: Ticket factura no muestra Razon Social ni Serie de Factura. @started(18-01-22 09:33) @done (18-01-22 10:07) @lasted(0:34) @project(Ventas)
+ ✔ Punto de Venta: Nombre de cliente y dirección deben de contraerse. @started(18-01-21 00:02) @done (18-01-21 23:19) @lasted(23:17) @project(Ventas)
+ ✔ Probar con fondo de body gris y fondo blanco en contenido @done (18-01-21 00:02) @project(General)
+ ✔ Validar que los módulos que usen Auth, primero verifiquen si hay sesión @started(18-01-20 17:59) @done (18-01-20 23:37) @lasted(5:38) @project(General)
+ ✔ Redireccionar si el usuario ya está logueado @done (18-01-20 23:37) @project(General)
+ ✔ Generar Backups de la Base de Datos @started(17-03-23 13:43) @done (17-03-24 07:12) @lasted(17:29) @project(General)
  ✔ Desactivar producto. @started(17-03-23 11:26) @done (17-03-23 12:45) @lasted(1:19) @project(Administrador)
  ✔ Reporte estadistico de productos no filtra los productos vendidos segun la fecha dada ni fiktra los productos perteneciente a la categoria mandada, muestra el total desde el inicio de apertura de la tienda. @done (17-03-23 12:41) @project(General)
  ✔ Reporte ventas corregir el monto total, no incluir los anulados, mostrar monto total de anulaciones. @done (17-03-23 12:00) @project(General)

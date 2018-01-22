@@ -1,10 +1,10 @@
 // Definir la aplicación
-var app = angular.module('administrarProductos', [], function($interpolateProvider) {
+let app = angular.module('administrarProductos', [], function($interpolateProvider) {
                           $interpolateProvider.startSymbol('{@');
                           $interpolateProvider.endSymbol('@}');
                        });
 // Definir el controlador
-app.controller('productosController', function ($scope, $http) {
+app.controller('productosController', function ($scope, $http, $timeout) {
   // Atributos
   $scope.id_producto = ''
   $scope.productos = []
@@ -14,6 +14,7 @@ app.controller('productosController', function ($scope, $http) {
   .success(function(response) {
     $scope.productos = response;
   })
+
   // Funciones
   $scope.confirmarEliminacion = function (id_producto) {
     $scope.id_producto = id_producto
@@ -21,7 +22,7 @@ app.controller('productosController', function ($scope, $http) {
   }
   $scope.eliminarProducto = function () {
     $('#modalConfirmacion').modal('hide')
-    var ruta = '/admin/producto/eliminar/'+ $scope.id_producto
+    let ruta = '/admin/producto/eliminar/'+ $scope.id_producto
     $http.get(ruta)
     .success(function(response) {
       if (response.resultado == 'true') {
@@ -30,7 +31,7 @@ app.controller('productosController', function ($scope, $http) {
           text : "Producto eliminado correctamente.",
           type : "success",
         }, function () {
-          var ruta = '/admin/productos/filtrar/' + $scope.estado
+          let ruta = '/admin/productos/filtrar/' + $scope.estado
           $http.get(ruta)
           .success(function(response) {
             $scope.productos = response;
@@ -46,10 +47,52 @@ app.controller('productosController', function ($scope, $http) {
     });
   }
   $scope.filtrarProductos = function (estado) {
-    var ruta = '/admin/productos/filtrar/' + estado
+    let ruta = '/admin/productos/filtrar/' + estado
     $http.get(ruta)
     .success(function(response) {
       $scope.productos = response;
+    })
+  }
+
+  // Métodos y atributos para revalidar la sesión
+  $scope.esSesionValida = true
+  $scope.timeOut = 1000// * 60 * 30
+  $scope.user = null
+  $scope.password = null
+  $scope.mensajeSesion = null
+
+  let countUp = function() {
+    // Verificar si la sesión caducó
+    let ruta = '/sesion/validar'
+    if ($scope.esSesionValida) {
+      $http.get(ruta)
+      .success(function (response) {
+        $scope.esSesionValida = response.resultado
+      })
+      $timeout(countUp, $scope.timeOut);
+    } else {
+      $('#modalSesion').modal('show')
+    }
+  }
+  $timeout(countUp, $scope.timeOut);
+
+  $scope.validarSesion = function () {
+    let url = '/usuario/admin/login'
+    $http.post(url, {
+      user : $scope.user,
+      password : $scope.password,
+    })
+    .success(function (response) {
+      if (response.redireccionar) {
+        window.location = '/dashboard'
+      } else {
+        $scope.esSesionValida = response.resultado
+        $scope.mensajeSesion = response.mensaje
+        if ($scope.esSesionValida) {
+          $('#modalSesion').modal('hide')
+          $timeout(countUp, $scope.timeOut);
+        }
+      }
     })
   }
 });

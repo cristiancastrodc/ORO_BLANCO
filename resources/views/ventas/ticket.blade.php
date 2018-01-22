@@ -1,70 +1,41 @@
 @extends('layouts.dashboard')
 
-@section('title')
-  Ticket
+@section('title', 'Ticket')
+
+@section('css')
+  <link rel="stylesheet" href="{{ asset('css/ticket.css') }}">
 @endsection
 
 @section('content')
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 hidden-print">
-        <h1>Resumen de la Operación</h1>
-        <div class="row">
-          <label class="col-sm-2 control-label">Nro. Documento:</label>
-          <div class="col-sm-10">
-            <p class="form-control-static">{{ $cliente_numero_documento }}</p>
-          </div>
-          <label class="col-sm-2 control-label">Cliente:</label>
-          <div class="col-sm-10">
-            <p class="form-control-static">{{ $cliente_razon_social }}</p>
-          </div>
-          <label class="col-sm-2 control-label">Ticket Nro.:</label>
-          <div class="col-sm-10">
-            <p class="form-control-static">{{ $comprobante }}</p>
-          </div>
-          <label class="col-sm-2 control-label">Total:</label>
-          <div class="col-sm-10">
-            <p class="form-control-static">S/. {{ $montos->total }}</p>
-          </div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 hidden-print">
+      <h1>Resumen de la Operación</h1>
+      <div class="row">
+        <label class="col-sm-2 control-label">Nro. Documento:</label>
+        <div class="col-sm-10">
+          <p class="form-control-static">{{ $cliente_numero_documento }}</p>
+        </div>
+        <label class="col-sm-2 control-label">Cliente:</label>
+        <div class="col-sm-10">
+          <p class="form-control-static">{{ $cliente_razon_social }}</p>
+        </div>
+        <label class="col-sm-2 control-label">Ticket Nro.:</label>
+        <div class="col-sm-10">
+          <p class="form-control-static">{{ $serie }} - {{ $comprobante }}</p>
+        </div>
+        <label class="col-sm-2 control-label">Total:</label>
+        <div class="col-sm-10">
+          <p class="form-control-static">S/. {{ $montos->total }}</p>
         </div>
       </div>
     </div>
   </div>
+</div>
 @endsection
 
 @section('outer-container')
-  <style>
-  .ticket {
-    font-family: monospace;
-  }
-  p {
-    margin-bottom: 0;
-  }
-  h4{
-    margin-bottom: 0;
-  }
-  @media screen {
-    .ticket {
-      visibility: hidden;
-    }
-  }
-  @media print {
-    .ticket > * {
-      font-family: monospace;
-      font-size: 18px;
-    }
-    .ticket > .title {
-      font-size: 35px;
-    }
-    p {
-      margin-bottom: 0;
-    }
-    table {
-      text-transform: uppercase;
-    }
-  }
-  </style>
-  <div class="ticket">
+<div class="ticket">
   <h4 class="text-center title">ORO BLANCO </h4>
   <p class="text-center big">Pasteleria</p>
   <p class="text-center"><small>{{ $razon_social }}</small></p>
@@ -72,7 +43,7 @@
   <p class="text-center">{{ $direccion}}</p>
   <p class="text-center">-----------------------------</p>
   <p>{{ $fecha_emision }}</p>
-  <p>Ticket Nro.: {{ $comprobante }}</p>
+  <p>Ticket Nro.: {{ $serie }} - {{ $comprobante }}</p>
   <p>Nro. Serie: FFCF280715</p>
   <p>Nro. Documento:{{ $cliente_numero_documento }}</p>
   <p>Cliente: {{ $cliente_razon_social }}</p>
@@ -114,11 +85,11 @@
       <td class="text-right">{{ number_format(($montos->efectivo - $montos->total), 2) }}</td>
     </tr>
   </table>
-  </div>
+</div>
 @endsection
 
 @section('scripts')
-  <script>
-    window.onload = function() { window.print(); }
-  </script>
+<script>
+  window.onload = function() { window.print(); }
+</script>
 @endsection

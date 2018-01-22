@@ -137,3 +137,18 @@ a {
 .modal-footer .btn+.btn {
   margin-bottom: 10px;
 }
+.fake_pass {
+  width: 1px;
+  height: 0;
+  position:absolute;
+  left:0;
+  top:0;
+  opacity: 0;
+  border: none;
+  padding: 0;
+  z-index: -9999;
+  visibility: hidden;
+}
+body {
+  background-color: #f5f8fa;
+}

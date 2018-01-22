@@ -14,14 +14,14 @@ ventas
 	 ---------------------------------------------------------------------------
 
 - generar reporte
-	
+
 	-----------------------------------------------------------------------------
 	Numero de Ventas : 1
 		  Monto total: 15.00
 			   Fechas:
 
 
-	Fecha 		Vendido Por		Comprobante		Cliente			Cant. Productos	Sub-Total	IGV		Total 	Tipo de Pago   
+	Fecha 		Vendido Por		Comprobante		Cliente			Cant. Productos	Sub-Total	IGV		Total 	Tipo de Pago
 
 	10/10/16	Juana			B001-00004		Marco Perez				2 		8.20		1.80	10.00	Efect.: 10.00
 
@@ -29,7 +29,7 @@ ventas
 
 	Nota: al hacer click en una venta se muestra el modal con el detalle de una venta.
 
-- consulta almacenada 
+- consulta almacenada
 
 
 ==========================================================================================================================
@@ -50,9 +50,9 @@ Estadistico de ingresos por reporte de tiempo
 	 ---------------------------------------------------------------------------
 
 - generar reporte
-	
+
 	-----------------------------------------------------------------------------
-	
+
 	Rango de tiempo		  Cant. Transacciones  		Promedio Transacciones    TOTAL promedio total
 
 	12:00 am - 2:00 am 			4 								3			120.00
@@ -60,7 +60,7 @@ Estadistico de ingresos por reporte de tiempo
 
 	-----------------------------------------------------------------------------
 
-	- consulta almacenada 
+	- consulta almacenada
 
 ==========================================================================================================================
 Estadistico de Movimiento de productos
@@ -80,16 +80,16 @@ Estadistico de Movimiento de productos
 	 ---------------------------------------------------------------------------
 
 - generar reporte
-	
+
 	-----------------------------------------------------------------------------
 	Ordenar por:  _____________> (mas Vendidos, menos vendidos, descripcion, Codigo de productos, total)
 
 	Cod. Productos 		Descripcion Prod. 	Precio Actual	Cantidad Vendida Total
-	T001				Tarta Ricota			9.00			20			 180.00	
+	T001				Tarta Ricota			9.00			20			 180.00
 	J002				Jugo de piña			20				5			 100.00
 -----------------------------------------------------------------------------
 
-	- consulta almacenada 
+	- consulta almacenada
 
 ==========================================================================================================================
 Resumen de Ventas
@@ -105,13 +105,13 @@ Resumen de Ventas
 	 ---------------------------------------------------------------------------
 
 - generar reporte
-	
+
 	-----------------------------------------------------------------------------
 	Fecha 		Cant. Transacciones 	Sub-Total 	IGV		TOTAL
 	10/10/16			19 				 182.00		18.00	200.00
 
 	-----------------------------------------------------------------------------
 
-	- consulta almacenada 
+	- consulta almacenada
 
 ==========================================================================================================================
